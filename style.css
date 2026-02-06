@@ -35,7 +35,7 @@ nav {
 /* --- HERO --- */
 .hero {
     height: 100vh;
-    background-image: url('https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=2070&auto=format&fit=crop');
+    background-image: url('téléchargement.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -154,4 +154,5 @@ footer { background: #080808; padding: 60px 50px 20px; border-top: 1px solid #22
     .menu { margin-top: 15px; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
     .menu a { margin: 0; }
     .footer-content { flex-direction: column; text-align: center; }
+
 }
