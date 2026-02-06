@@ -1,0 +1,157 @@
+/* --- VARIABLES & BASE --- */
+:root {
+    --bcm-orange: #FF8000; /* Orange McLaren */
+    --dark-bg: #111111;
+    --card-bg: #1a1a1a;
+    --text-white: #ffffff;
+    --text-grey: #a0a0a0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: black;
+    color: var(--text-white);
+    font-family: 'Barlow', sans-serif;
+    overflow-x: hidden;
+}
+
+a { text-decoration: none; color: white; transition: 0.3s; }
+
+/* --- NAVIGATION --- */
+nav {
+    position: fixed;
+    top: 0; width: 100%;
+    padding: 20px 50px;
+    z-index: 1000;
+    background: rgba(0,0,0,0.9);
+    border-bottom: 1px solid #333;
+}
+.nav-container { display: flex; justify-content: space-between; align-items: center; }
+.brand { font-size: 1.5rem; font-weight: bold; letter-spacing: 2px; }
+.menu a { margin-left: 20px; font-size: 0.9rem; text-transform: uppercase; color: var(--text-grey); }
+.menu a:hover { color: var(--bcm-orange); }
+
+/* --- HERO --- */
+.hero {
+    height: 100vh;
+    background-image: url('https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=2070&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+.hero::after { content: ''; position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.6); }
+.hero-content { position: relative; z-index: 2; }
+.hero h2 { color: var(--bcm-orange); letter-spacing: 5px; margin-bottom: 10px; }
+.hero h1 { font-size: 4rem; text-transform: uppercase; margin-bottom: 30px; }
+.btn-primary { padding: 15px 40px; border: 1px solid white; text-transform: uppercase; font-weight: bold; }
+.btn-primary:hover { background: var(--bcm-orange); border-color: var(--bcm-orange); color: black; }
+
+/* --- LORE (HISTOIRE) --- */
+.lore-section {
+    padding: 100px 20px;
+    background-color: var(--dark-bg);
+    text-align: center;
+}
+.lore-container { max-width: 800px; margin: 0 auto; }
+.lore-subtitle { color: var(--bcm-orange); font-weight: bold; letter-spacing: 3px; display: block; margin-bottom: 15px; }
+.lore-section h2 { font-size: 2.5rem; margin-bottom: 30px; font-weight: 300; text-transform: uppercase; }
+.lore-text p { color: var(--text-grey); margin-bottom: 20px; font-size: 1.1rem; line-height: 1.6; }
+
+/* --- VOITURES (GRID 2x2) --- */
+.models-section { padding: 80px 50px; background-color: black; }
+.section-title { font-size: 2rem; border-left: 4px solid var(--bcm-orange); padding-left: 15px; margin-bottom: 50px; text-transform: uppercase; }
+
+.cars-grid {
+    display: grid;
+    /* C'est ici que se fait le 2 par 2 */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 40px;
+}
+
+.car-card {
+    background: var(--card-bg);
+    border: 1px solid #333;
+    transition: 0.3s;
+}
+.car-card:hover { border-color: var(--bcm-orange); transform: translateY(-5px); }
+
+.car-image { height: 300px; overflow: hidden; width: 100%; }
+.car-image img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+.car-card:hover img { transform: scale(1.1); }
+
+.car-info { padding: 30px; }
+.car-info h4 { font-size: 1.5rem; margin-bottom: 10px; text-transform: uppercase; color: white; }
+.car-desc { color: var(--text-grey); margin-bottom: 20px; font-style: italic; }
+
+/* Design des spécificités techniques */
+.specs-list { list-style: none; border-top: 1px solid #333; padding-top: 20px; }
+.specs-list li {
+    display: flex; justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: #ccc;
+    border-bottom: 1px dashed #333;
+    padding-bottom: 5px;
+}
+.specs-list strong { color: var(--bcm-orange); }
+
+/* --- EQUIPE (GRID 3x2) --- */
+.team-section { padding: 80px 50px; background-color: var(--dark-bg); text-align: center; }
+.team-intro { color: var(--text-grey); margin-bottom: 50px; }
+
+.team-grid {
+    display: grid;
+    /* C'est ici que se fait le 3 par ligne */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.member-card {
+    background: black;
+    padding: 30px;
+    border: 1px solid #333;
+    transition: 0.3s;
+}
+.member-card:hover { border-bottom: 3px solid var(--bcm-orange); }
+
+.member-card img {
+    width: 120px; height: 120px;
+    border-radius: 50%; /* Image ronde */
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 2px solid var(--bcm-orange);
+}
+.member-card h5 { font-size: 1.2rem; text-transform: uppercase; margin-bottom: 5px; }
+.role { display: block; color: var(--bcm-orange); font-size: 0.8rem; font-weight: bold; margin-bottom: 15px; text-transform: uppercase; }
+.bio { font-size: 0.9rem; color: var(--text-grey); line-height: 1.4; }
+
+/* --- FOOTER --- */
+footer { background: #080808; padding: 60px 50px 20px; border-top: 1px solid #222; }
+.footer-content {
+    display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 40px;
+}
+.footer-brand, .footer-contact, .footer-social { flex: 1; min-width: 250px; margin-bottom: 20px; }
+
+.footer-brand h3 { color: white; margin-bottom: 10px; }
+.footer-contact h4, .footer-social h4 { color: var(--bcm-orange); margin-bottom: 15px; font-size: 0.9rem; }
+.footer-contact p { color: var(--text-grey); font-size: 0.9rem; margin-bottom: 5px; }
+
+.social-icons a { margin-right: 15px; font-size: 1.2rem; color: white; }
+.social-icons a:hover { color: var(--bcm-orange); }
+
+.footer-bottom { text-align: center; font-size: 0.8rem; color: #444; padding-top: 20px; border-top: 1px solid #1a1a1a; }
+
+/* --- MOBILE RESPONSIVE --- */
+@media (max-width: 768px) {
+    .cars-grid, .team-grid { grid-template-columns: 1fr; } /* Une seule colonne sur mobile */
+    .hero h1 { font-size: 2.5rem; }
+    .nav-container { flex-direction: column; }
+    .menu { margin-top: 15px; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+    .menu a { margin: 0; }
+    .footer-content { flex-direction: column; text-align: center; }
+}
