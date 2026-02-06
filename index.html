@@ -169,71 +169,73 @@
     </section>
 
     <section id="Globe" class="Globe">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-  <script>
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(
-      60,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      1000
-    );
+    <div class="hero-split">
+        <div id="globe-container"></div>
+        <div class="hero-text">
+            <h1>BCM Innovates</h1>
+            <p>
+                Poussée par la curiosité et l'excellence, notre équipe transforme chaque idée en innovation mécanique. 
+                Nos voitures ne sont pas seulement rapides — elles racontent une histoire de précision, de passion et de performance.
+            </p>
+            <p>
+                Explorez l'univers BCM et découvrez comment chaque courbe, chaque moteur, chaque détail a été conçu pour créer une expérience unique au volant.
+            </p>
+            <a href="#models" class="btn-primary">Découvrir nos modèles</a>
+        </div>
+    </div>
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script>
+        const scene = new THREE.Scene();
+        const container = document.getElementById("globe-container");
 
-    // Create spiderweb globe (wireframe sphere)
-    const radius = 2;
-    const widthSegments = 24;
-    const heightSegments = 16;
+        const camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        container.appendChild(renderer.domElement);
 
-    const geometry = new THREE.SphereGeometry(
-      radius,
-      widthSegments,
-      heightSegments
-    );
+        const radius = 2, widthSegments = 64, heightSegments = 64;
+        const geometry = new THREE.SphereGeometry(radius, widthSegments, heightSegments);
 
-    const wireframe = new THREE.WireframeGeometry(geometry);
+        const textureLoader = new THREE.TextureLoader();
+        const earthTexture = textureLoader.load("https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg");
+        const earthMaterial = new THREE.MeshBasicMaterial({ map: earthTexture });
+        const earth = new THREE.Mesh(geometry, earthMaterial);
+        scene.add(earth);
 
-    const material = new THREE.LineBasicMaterial({
-      color: 0xffffff,
-      transparent: true,
-      opacity: 0.9,
-    });
+        const wireframe = new THREE.WireframeGeometry(geometry);
+        const material = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.5 });
+        const globe = new THREE.LineSegments(wireframe, material);
+        scene.add(globe);
 
-    const globe = new THREE.LineSegments(wireframe, material);
-    scene.add(globe);
+        camera.position.z = 5;
 
-    camera.position.z = 5;
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.enableZoom = true;
 
-    // Orbit controls for interactivity
-    const controls = new THREE.OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true;
-    controls.dampingFactor = 0.05;
-    controls.enableZoom = true;
+        function animate() {
+            requestAnimationFrame(animate);
+            earth.rotation.y += 0.003;
+            globe.rotation.y += 0.003;
+            controls.update();
+            renderer.render(scene, camera);
+        }
+        animate();
 
-    // Animation
-    function animate() {
-      requestAnimationFrame(animate);
+        window.addEventListener("resize", () => {
+            const size = Math.min(window.innerWidth, window.innerHeight) * 0.6;
+            container.style.width = size + "px";
+            container.style.height = size + "px";
+            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(container.clientWidth, container.clientHeight);
+        });
+    </script>
+</section>
 
-      globe.rotation.y += 0.003;
-
-      controls.update();
-      renderer.render(scene, camera);
-    }
-
-    animate();
-
-    // Responsive resize
-    window.addEventListener("resize", () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    });
-  </script>
-    </section>
 
     <footer id="contact">
         <div class="footer-content">

@@ -145,7 +145,58 @@ footer { background: #080808; padding: 60px 50px 20px; border-top: 1px solid #22
 .social-icons a:hover { color: var(--bcm-orange); }
 
 .footer-bottom { text-align: center; font-size: 0.8rem; color: #444; padding-top: 20px; border-top: 1px solid #1a1a1a; }
+/* --- Globe Container --- */
+.Globe .hero-split {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 50px;
+    padding: 50px;
+    background-color: #000;
+    min-height: 80vh;
+}
 
+#globe-container {
+    width: 400px;
+    height: 400px;
+}
+
+.hero-text {
+    color: var(--text-white);
+    max-width: 600px;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero-text p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.hero-text .btn-primary {
+    padding: 12px 30px;
+    font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .Globe .hero-split {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    #globe-container {
+        width: 80%;
+        height: 300px;
+    }
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+}
 /* --- MOBILE RESPONSIVE --- */
 @media (max-width: 768px) {
     .cars-grid, .team-grid { grid-template-columns: 1fr; } /* Une seule colonne sur mobile */
