@@ -3,97 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>McLaren Automotive - Replica</title>
-    <link rel="stylesheet" href="css.css">
+    <title>Budgetcut Motors | Official Site</title>
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
     <nav>
         <div class="nav-container">
-            <a href="#" class="brand">Mclaren</a>
-
+            <div class="brand">BCM <span style="color:#FF8000">.</span></div>
             <div class="menu">
-                <a href="URL_VOITURES">[VOITURES]</a>
-                <a href="URL_RACING">[RACING]</a>
-                <a href="URL_EXPERIENCE">[EXPÉRIENCES]</a>
-                <a href="URL_CONTACT">[CONTACT]</a>
+                <a href="#lore">L'Histoire</a>
+                <a href="#models">Modèles</a>
+                <a href="#team">L'Équipe</a>
+                <a href="#contact">Contact</a>
             </div>
         </div>
     </nav>
 
     <header class="hero">
-        <div class="hero-text">
-            <h2>[NOUVEAU MODÈLE]</h2> <h1>[PERFORMANCE HYBRIDE]</h1>
-            
-            <div class="cta-group">
-                <a href="URL_DECOUVRIR" class="btn btn-primary">[DÉCOUVRIR]</a>
-                <a href="URL_CONFIGURER" class="btn btn-secondary">[CONFIGURER]</a>
-            </div>
+        <div class="hero-content">
+            <h2>BUDGETCUT MOTORS</h2>
+            <h1>LA VITESSE À PRIX COUTANT</h1>
+            <a href="#models" class="btn-primary">VOIR LA GAMME</a>
         </div>
     </header>
 
-    <section class="models-section">
-        <div class="section-header">
-            <h3>[NOS DERNIERS MODÈLES]</h3>
-            <a href="URL_TOUT_VOIR" class="link-arrow">[TOUT VOIR] &rarr;</a>
+    <section id="lore" class="lore-section">
+        <div class="lore-container">
+            <span class="lore-subtitle">EST. 2026</span>
+            <h2>L'ART DE LA DÉCOUPE</h2>
+            <div class="lore-text">
+                <p>
+                    [Paragraphe 1 : Expliquez le concept BCM. Ex: "Chez Budgetcut Motors, nous pensons que vous ne devriez pas payer pour ce qui ne vous fait pas aller plus vite. Nous avons supprimé le superflu : pas de clim, pas de sièges passagers, pas de freins inutiles."]
+                </p>
+                <p>
+                    [Paragraphe 2 : Philosophie. Ex: "Nos ingénieurs ne dorment pas, car le sommeil coûte cher. Le résultat ? Une performance brute, accessible, et dangereusement rapide."]
+                </p>
+            </div>
         </div>
+    </section>
 
-        <div class="models-grid">
+    <section id="models" class="models-section">
+        <h3 class="section-title">NOS BOLIDES (THE CUT SERIES)</h3>
+        
+        <div class="cars-grid">
             
-            <article class="model-card">
-                <a href="URL_PAGE_VOITURE_1" class="img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1621689726678-f7c89c894982?q=80&w=2070&auto=format&fit=crop" alt="Voiture 1">
-                </a>
-                <div class="model-info">
-                    <h4>[NOM DU MODÈLE 1]</h4> <p>[DESCRIPTION COURTE]</p>
-                    <a href="URL_PAGE_VOITURE_1" class="details-link">[EXPLORER]</a>
+            <article class="car-card">
+                <div class="car-image">
+                    <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=2070&auto=format&fit=crop" alt="Voiture 1">
+                </div>
+                <div class="car-info">
+                    <h4>[NOM DU MODÈLE 1]</h4>
+                    <p class="car-desc">[Description: Ex: La voiture la plus légère du marché car nous avons retiré le plancher.]</p>
+                    
+                    <ul class="specs-list">
+                        <li><strong>Moteur:</strong> [V8 Eco-Recyclé]</li>
+                        <li><strong>Puissance:</strong> [720 CH]</li>
+                        <li><strong>0-100 km/h:</strong> [2.8 s]</li>
+                        <li><strong>Poids:</strong> [900 kg]</li>
+                    </ul>
                 </div>
             </article>
 
-            <article class="model-card">
-                <a href="URL_PAGE_VOITURE_2" class="img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1544614471-5c9612871359?q=80&w=2074&auto=format&fit=crop" alt="Voiture 2">
-                </a>
-                <div class="model-info">
-                    <h4>[NOM DU MODÈLE 2]</h4> <p>[DESCRIPTION COURTE]</p>
-                    <a href="URL_PAGE_VOITURE_2" class="details-link">[EXPLORER]</a>
+            <article class="car-card">
+                <div class="car-image">
+                    <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=2070&auto=format&fit=crop" alt="Voiture 2">
+                </div>
+                <div class="car-info">
+                    <h4>[NOM DU MODÈLE 2]</h4>
+                    <p class="car-desc">[Description: Conçue pour la piste, interdite sur route, mais qui vérifie ?]</p>
+                    
+                    <ul class="specs-list">
+                        <li><strong>Moteur:</strong> [V6 Hybride]</li>
+                        <li><strong>Puissance:</strong> [650 CH]</li>
+                        <li><strong>0-100 km/h:</strong> [3.1 s]</li>
+                        <li><strong>Poids:</strong> [1100 kg]</li>
+                    </ul>
                 </div>
             </article>
 
-            <article class="model-card">
-                <a href="URL_PAGE_VOITURE_3" class="img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1566008885218-90abf9200ddb?q=80&w=2070&auto=format&fit=crop" alt="Voiture 3">
-                </a>
-                <div class="model-info">
-                    <h4>[NOM DU MODÈLE 3]</h4> <p>[DESCRIPTION COURTE]</p>
-                    <a href="URL_PAGE_VOITURE_3" class="details-link">[EXPLORER]</a>
+            <article class="car-card">
+                <div class="car-image">
+                    <img src="https://images.unsplash.com/photo-1544614471-5c9612871359?q=80&w=2074&auto=format&fit=crop" alt="Voiture 3">
+                </div>
+                <div class="car-info">
+                    <h4>[NOM DU MODÈLE 3]</h4>
+                    <p class="car-desc">[Description: Le SUV Budgetcut. On a juste mis de plus grosses roues.]</p>
+                    
+                    <ul class="specs-list">
+                        <li><strong>Moteur:</strong> [V12 Diesel]</li>
+                        <li><strong>Puissance:</strong> [800 CH]</li>
+                        <li><strong>0-100 km/h:</strong> [3.5 s]</li>
+                        <li><strong>Poids:</strong> [1500 kg]</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="car-card">
+                <div class="car-image">
+                    <img src="https://images.unsplash.com/photo-1503376763036-066120622c74?q=80&w=2070&auto=format&fit=crop" alt="Voiture 4">
+                </div>
+                <div class="car-info">
+                    <h4>[NOM DU MODÈLE 4]</h4>
+                    <p class="car-desc">[Description: Notre modèle électrique. Batteries non incluses.]</p>
+                    
+                    <ul class="specs-list">
+                        <li><strong>Moteur:</strong> [Electrique Tri-Moteur]</li>
+                        <li><strong>Puissance:</strong> [1000 CH]</li>
+                        <li><strong>0-100 km/h:</strong> [1.9 s]</li>
+                        <li><strong>Autonomie:</strong> [50 km]</li>
+                    </ul>
                 </div>
             </article>
 
         </div>
     </section>
 
-    <section class="banner-split">
-        <div class="split-content">
-            <h3>[TITRE SECTION SPÉCIALE]</h3>
-            <p>[Texte descriptif sur la personnalisation ou la course...]</p>
-            <a href="URL_PLUS" class="btn btn-primary">[EN SAVOIR PLUS]</a>
-        </div>
-        <div class="split-image">
-            <img src="https://images.unsplash.com/photo-1580273916550-e323be2ed532?q=80&w=1000&auto=format&fit=crop" alt="Special">
+    <section id="team" class="team-section">
+        <h3 class="section-title">L'ÉQUIPE BCM</h3>
+        <p class="team-intro">Moins de salaire, plus de passion.</p>
+
+        <div class="team-grid">
+            <div class="member-card">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Membre 1">
+                <h5>[NOM ÉLÈVE 1]</h5>
+                <span class="role">PDG & Visionnaire</span>
+                <p class="bio">[Petite phrase descriptive...]</p>
+            </div>
+
+            <div class="member-card">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Membre 2">
+                <h5>[NOM ÉLÈVE 2]</h5>
+                <span class="role">Directeur Technique</span>
+                <p class="bio">[Expert en moteurs...]</p>
+            </div>
+
+            <div class="member-card">
+                <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Membre 3">
+                <h5>[NOM ÉLÈVE 3]</h5>
+                <span class="role">Designer Chef</span>
+                <p class="bio">[Spécialiste aéro...]</p>
+            </div>
+
+            <div class="member-card">
+                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Membre 4">
+                <h5>[NOM ÉLÈVE 4]</h5>
+                <span class="role">Resp. Marketing</span>
+                <p class="bio">[Vendrait du sable au désert...]</p>
+            </div>
+
+            <div class="member-card">
+                <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Membre 5">
+                <h5>[NOM ÉLÈVE 5]</h5>
+                <span class="role">Pilote d'Essai</span>
+                <p class="bio">[N'a peur de rien...]</p>
+            </div>
+
+            <div class="member-card">
+                <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Membre 6">
+                <h5>[NOM ÉLÈVE 6]</h5>
+                <span class="role">Ingénieur Son</span>
+                <p class="bio">[Règle le bruit du pot...]</p>
+            </div>
         </div>
     </section>
 
-    <footer>
-        <div class="footer-links">
-            <a href="#">[MENTIONS LÉGALES]</a>
-            <a href="#">[CARRIÈRES]</a>
-            <a href="#">[MÉDIAS]</a>
-            <a href="#">[COOKIE POLICY]</a>
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>BUDGETCUT MOTORS</h3>
+                <p>La performance avant la sécurité.</p>
+            </div>
+            
+            <div class="footer-contact">
+                <h4>NOUS CONTACTER</h4>
+                <p>Email: contact@budgetcut-motors.fake</p>
+                <p>Tel: +33 1 23 45 67 89</p>
+                <p>Adresse: 12 Rue de la Vitesse, Lyon</p>
+            </div>
+
+            <div class="footer-social">
+                <h4>SUIVEZ-NOUS</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
         </div>
-        <div class="copyright">
-            &copy; 2024 McLaren Automotive Limited.
+        <div class="footer-bottom">
+            &copy; 2026 Budgetcut Motors. Projet Étudiant.
         </div>
     </footer>
 
