@@ -35,7 +35,7 @@ nav {
 /* --- HERO --- */
 .hero {
     height: 100vh;
-    background-image: url('image.img1.jpg');
+    background-image: url(image/Car_parkingslot.png);
     background-size: cover;
     background-position: center;
     display: flex;
