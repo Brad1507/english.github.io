@@ -35,7 +35,7 @@ nav {
 /* --- HERO --- */
 .hero {
     height: 100vh;
-    background-image: url(image/Car_parkingslot.png);
+    background-image: url(image/img1.png);
     background-size: cover;
     background-position: center;
     display: flex;
@@ -156,6 +156,7 @@ footer { background: #080808; padding: 60px 50px 20px; border-top: 1px solid #22
     .footer-content { flex-direction: column; text-align: center; }
 
 }
+
 
 
 
