@@ -1,6 +1,6 @@
 /* --- VARIABLES & BASE --- */
 :root {
-    --bcm-orange: #FF8000; /* Orange McLaren */
+    --bcm-orange: #a00000; 
     --dark-bg: #111111;
     --card-bg: #1a1a1a;
     --text-white: #ffffff;
@@ -117,11 +117,13 @@ nav {
     border: 1px solid #333;
     transition: 0.3s;
 }
-.member-card:hover { border-bottom: 3px solid var(--bcm-orange); }
+.member-card:hover {
+     border: 3px solid var(--bcm-orange);
+     }
 
 .member-card img {
     width: 120px; height: 120px;
-    border-radius: 50%; /* Image ronde */
+    border-radius: 50%;
     object-fit: cover;
     margin-bottom: 20px;
     border: 2px solid var(--bcm-orange);
