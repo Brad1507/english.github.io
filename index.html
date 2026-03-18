@@ -5,238 +5,336 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Budgetcut Motors | Official Site</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;500;600;700&family=Space+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-<nav>
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<nav id="navbar">
     <div class="nav-container">
-        <div class="brand">BCM <span style="color:#edbe00">.</span></div>
+        <div class="brand">BCM<span class="brand-dot">.</span></div>
         <div class="menu">
-            <a href="Heritage.html">Heritage</a>
-            <a href="#models">Collection</a>
-            <a href="#team">Engineering</a>
-            <a href="#contact">Contact</a>
+            <a href="Heritage.html" class="nav-link"><span>Heritage</span></a>
+            <a href="#models" class="nav-link"><span>Collection</span></a>
+            <a href="#team" class="nav-link"><span>Engineering</span></a>
+            <a href="#contact" class="nav-link"><span>Contact</span></a>
         </div>
+        <div class="nav-est">EST. 2026</div>
     </div>
 </nav>
 
 <header class="hero">
+    <div class="hero-noise"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-bg-img"></div>
+
     <div class="hero-content">
-        <h2>BUDGETCUT MOTORS</h2>
-        <h1>Build for speed, made for legend</h1>
-        <a href="#models" class="btn-primary">Explore the collection</a>
+        <div class="hero-eyebrow">
+            <span class="eyebrow-line"></span>
+            <span class="eyebrow-text">BUDGETCUT MOTORS</span>
+            <span class="eyebrow-line"></span>
+        </div>
+        <h1 class="hero-title">
+            <span class="title-row">BUILT <em>FOR</em></span>
+            <span class="title-row big">SPEED</span>
+            <span class="title-row">MADE <em>FOR</em></span>
+            <span class="title-row big gold">LEGEND</span>
+        </h1>
+        <a href="#models" class="btn-primary">
+            <span>Explore the Collection</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+    </div>
+
+    <div class="hero-scroll-hint">
+        <span>SCROLL</span>
+        <div class="scroll-line"></div>
+    </div>
+
+    <div class="hero-stats">
+        <div class="stat-item">
+            <span class="stat-num" data-target="6">0</span>
+            <span class="stat-label">Models</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+            <span class="stat-num" data-target="1000">0</span>
+            <span class="stat-label">Max HP</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+            <span class="stat-num stat-fixed">1.9s</span>
+            <span class="stat-label">0–100 km/h</span>
+        </div>
     </div>
 </header>
 
-<section id="lore" class="lore-section">
+<!-- LORE -->
+<section id="lore" class="lore-section reveal">
+    <div class="lore-bg-text" aria-hidden="true">BCM</div>
     <div class="lore-container">
-        <span class="lore-subtitle">EST. 2026</span>
-        <h2>RACING DNA. REFINED.</h2>
-        <div class="lore-text">
-            <p>
-                Budgetcut Motors blends motorsport engineering with modern luxury.
-                Every BCM vehicle is born from race-inspired design principles —
-                lightweight structures, carbon-focused construction, and aerodynamic
-                efficiency — crafted into machines that deliver both speed and elegance.
-            </p>
-            <p>
-                We engineer with the discipline of the track and the precision of
-                high-end craftsmanship. Each component serves a purpose: maximizing
-                performance, sharpening driver feedback, and transforming raw speed
-                into a controlled, refined experience.
-            </p>
+        <div class="lore-left">
+            <span class="section-tag">// ORIGIN</span>
+            <h2 class="lore-title">RACING<br><em>DNA.</em><br>REFINED.</h2>
+        </div>
+        <div class="lore-right">
+            <p>Budgetcut Motors blends motorsport engineering with modern luxury. Every BCM vehicle is born from race-inspired design principles — lightweight structures, carbon-focused construction, and aerodynamic efficiency — crafted into machines that deliver both speed and elegance.</p>
+            <p>We engineer with the discipline of the track and the precision of high-end craftsmanship. Each component serves a purpose: maximizing performance, sharpening driver feedback, and transforming raw speed into a controlled, refined experience.</p>
+            <div class="lore-line"></div>
         </div>
     </div>
 </section>
 
+<!-- MODELS -->
 <section id="models" class="models-section">
-    <h3 class="section-title">THE CUT SERIES</h3>
-    
+    <div class="section-header reveal">
+        <span class="section-tag">// THE CUT SERIES</span>
+        <h3 class="section-title">THE COLLECTION</h3>
+    </div>
+
     <div class="cars-grid">
-        
-        <article class="car-card">
+
+        <article class="car-card reveal">
+            <div class="car-badge">TRACK</div>
             <div class="car-image">
-                <img src="image/Car_parkingslot.png" alt="Car 1">
+                <img src="image/Car_parkingslot.png" alt="BCM Apex">
+                <div class="car-img-overlay"></div>
             </div>
             <div class="car-info">
-                <h4>BCM APEX</h4>
-                <p class="car-desc">
-                    Ultra-light carbon architecture engineered for explosive
-                    acceleration and track-level precision.
-                </p>
-                
+                <div class="car-header-row">
+                    <h4>BCM APEX</h4>
+                    <span class="car-hp">720 HP</span>
+                </div>
+                <p class="car-desc">Ultra-light carbon architecture engineered for explosive acceleration and track-level precision.</p>
                 <ul class="specs-list">
-                    <li><strong>Engine:</strong> Recycled Eco V8</li>
-                    <li><strong>Power:</strong> 720 HP</li>
-                    <li><strong>0–100 km/h:</strong> 2.8 s</li>
-                    <li><strong>Weight:</strong> 900 kg</li>
+                    <li><span class="sk">Engine</span><span class="sv">Recycled Eco V8</span></li>
+                    <li><span class="sk">Power</span><span class="sv">720 HP</span></li>
+                    <li><span class="sk">0–100 km/h</span><span class="sv">2.8 s</span></li>
+                    <li><span class="sk">Weight</span><span class="sv">900 kg</span></li>
                 </ul>
+                <a href="#" class="card-cta">Discover <span class="arrow">→</span></a>
             </div>
         </article>
 
-        <article class="car-card">
+        <article class="car-card reveal">
+            <div class="car-badge">HYBRID</div>
             <div class="car-image">
-                <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=2070&auto=format&fit=crop" alt="Car 2">
+                <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?q=80&w=2070&auto=format&fit=crop" alt="BCM Velocity">
+                <div class="car-img-overlay"></div>
             </div>
             <div class="car-info">
-                <h4>BCM VELOCITY</h4>
-                <p class="car-desc">
-                    Circuit-focused platform optimized through advanced
-                    aerodynamics and hybrid racing technology.
-                </p>
-                
+                <div class="car-header-row">
+                    <h4>BCM VELOCITY</h4>
+                    <span class="car-hp">650 HP</span>
+                </div>
+                <p class="car-desc">Circuit-focused platform optimized through advanced aerodynamics and hybrid racing technology.</p>
                 <ul class="specs-list">
-                    <li><strong>Engine:</strong> Hybrid V6</li>
-                    <li><strong>Power:</strong> 650 HP</li>
-                    <li><strong>0–100 km/h:</strong> 3.1 s</li>
-                    <li><strong>Weight:</strong> 1100 kg</li>
+                    <li><span class="sk">Engine</span><span class="sv">Hybrid V6</span></li>
+                    <li><span class="sk">Power</span><span class="sv">650 HP</span></li>
+                    <li><span class="sk">0–100 km/h</span><span class="sv">3.1 s</span></li>
+                    <li><span class="sk">Weight</span><span class="sv">1100 kg</span></li>
                 </ul>
+                <a href="#" class="card-cta">Discover <span class="arrow">→</span></a>
             </div>
         </article>
 
-        <article class="car-card">
+        <article class="car-card reveal">
+            <div class="car-badge">SUV</div>
             <div class="car-image">
-                <img src="image/Car_parkingslot.png" alt="Car 3">
+                <img src="image/Car_parkingslot.png" alt="BCM Pulse">
+                <div class="car-img-overlay"></div>
             </div>
             <div class="car-info">
-                <h4>BCM PULSE</h4>
-                <p class="car-desc">
-                    Performance SUV combining elevated comfort with
-                    supercar dynamics and adaptive stability.
-                </p>
-                
+                <div class="car-header-row">
+                    <h4>BCM PULSE</h4>
+                    <span class="car-hp">800 HP</span>
+                </div>
+                <p class="car-desc">Performance SUV combining elevated comfort with supercar dynamics and adaptive stability.</p>
                 <ul class="specs-list">
-                    <li><strong>Engine:</strong> Diesel V12</li>
-                    <li><strong>Power:</strong> 800 HP</li>
-                    <li><strong>0–100 km/h:</strong> 3.5 s</li>
-                    <li><strong>Weight:</strong> 1500 kg</li>
+                    <li><span class="sk">Engine</span><span class="sv">Diesel V12</span></li>
+                    <li><span class="sk">Power</span><span class="sv">800 HP</span></li>
+                    <li><span class="sk">0–100 km/h</span><span class="sv">3.5 s</span></li>
+                    <li><span class="sk">Weight</span><span class="sv">1500 kg</span></li>
                 </ul>
+                <a href="#" class="card-cta">Discover <span class="arrow">→</span></a>
+            </div>
+        </article>
+        <article class="car-card reveal">
+            <div class="car-badge">SUV</div>
+            <div class="car-image">
+                <img src="image/Car_parkingslot.png" alt="BCM Pulse">
+                <div class="car-img-overlay"></div>
+            </div>
+            <div class="car-info">
+                <div class="car-header-row">
+                    <h4>BCM PULSE</h4>
+                    <span class="car-hp">800 HP</span>
+                </div>
+                <p class="car-desc">Performance SUV combining elevated comfort with supercar dynamics and adaptive stability.</p>
+                <ul class="specs-list">
+                    <li><span class="sk">Engine</span><span class="sv">Diesel V12</span></li>
+                    <li><span class="sk">Power</span><span class="sv">800 HP</span></li>
+                    <li><span class="sk">0–100 km/h</span><span class="sv">3.5 s</span></li>
+                    <li><span class="sk">Weight</span><span class="sv">1500 kg</span></li>
+                </ul>
+                <a href="#" class="card-cta">Discover <span class="arrow">→</span></a>
+            </div>
+        </article>
+        <article class="car-card reveal">
+            <div class="car-badge">SUV</div>
+            <div class="car-image">
+                <img src="image/Car_parkingslot.png" alt="BCM Pulse">
+                <div class="car-img-overlay"></div>
+            </div>
+            <div class="car-info">
+                <div class="car-header-row">
+                    <h4>BCM PULSE</h4>
+                    <span class="car-hp">800 HP</span>
+                </div>
+                <p class="car-desc">Performance SUV combining elevated comfort with supercar dynamics and adaptive stability.</p>
+                <ul class="specs-list">
+                    <li><span class="sk">Engine</span><span class="sv">Diesel V12</span></li>
+                    <li><span class="sk">Power</span><span class="sv">800 HP</span></li>
+                    <li><span class="sk">0–100 km/h</span><span class="sv">3.5 s</span></li>
+                    <li><span class="sk">Weight</span><span class="sv">1500 kg</span></li>
+                </ul>
+                <a href="#" class="card-cta">Discover <span class="arrow">→</span></a>
             </div>
         </article>
 
-        <article class="car-card">
+        <article class="car-card reveal card-featured">
+            <div class="car-badge electric">ELECTRIC</div>
             <div class="car-image">
-                <img src="https://images.unsplash.com/photo-1503376763036-066120622c74?q=80&w=2070&auto=format&fit=crop" alt="Car 4">
+                <img src="https://images.unsplash.com/photo-1503376763036-066120622c74?q=80&w=2070&auto=format&fit=crop" alt="BCM Nova">
+                <div class="car-img-overlay"></div>
             </div>
             <div class="car-info">
-                <h4>BCM NOVA</h4>
-                <p class="car-desc">
-                    Fully electric tri-motor system delivering instant torque
-                    and next-generation performance.
-                </p>
-                
+                <div class="car-header-row">
+                    <h4>BCM NOVA</h4>
+                    <span class="car-hp gold-hp">1000 HP</span>
+                </div>
+                <p class="car-desc">Fully electric tri-motor system delivering instant torque and next-generation performance.</p>
                 <ul class="specs-list">
-                    <li><strong>Engine:</strong> Electric Tri-Motor</li>
-                    <li><strong>Power:</strong> 1000 HP</li>
-                    <li><strong>0–100 km/h:</strong> 1.9 s</li>
-                    <li><strong>Range:</strong> 50 km</li>
+                    <li><span class="sk">Engine</span><span class="sv">Electric Tri-Motor</span></li>
+                    <li><span class="sk">Power</span><span class="sv">1000 HP</span></li>
+                    <li><span class="sk">0–100 km/h</span><span class="sv">1.9 s</span></li>
+                    <li><span class="sk">Range</span><span class="sv">500 km</span></li>
                 </ul>
+                <a href="#" class="card-cta">Discover <span class="arrow">→</span></a>
             </div>
         </article>
 
     </div>
 </section>
 
+<!-- TEAM -->
 <section id="team" class="team-section">
-    <h3 class="section-title">THE BCM ENGINEERING DIVISION</h3>
-    <p class="team-intro">Where racing expertise meets luxury craftsmanship.</p>
+    <div class="team-bg-glow"></div>
+    <div class="section-header reveal">
+        <span class="section-tag">// THE PEOPLE</span>
+        <h3 class="section-title">ENGINEERING DIVISION</h3>
+        <p class="team-intro">Where racing expertise meets luxury craftsmanship.</p>
+    </div>
 
     <div class="team-grid">
-        <div class="member-card">
-            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Member 1">
-            <h5>BRAD</h5>
-            <span class="role">Chief Executive Officer</span>
-            <p class="bio">Defines BCM’s global vision and performance direction.</p>
-        </div>
+        <div class="member-card reveal" style="--d:0ms"><div class="member-img-wrap"><img src="https://api.dicebear.com/7.x/personas/svg?seed=Brad&backgroundColor=1a1a1a" alt="Brad"><div class="member-ring"></div></div><div class="member-info"><h5>BRAD</h5><span class="role">Chief Executive Officer</span><p class="bio">Defines BCM's global vision and performance direction.</p></div></div>
+        <div class="member-card reveal" style="--d:80ms"><div class="member-img-wrap"><img src="https://api.dicebear.com/7.x/personas/svg?seed=Nel&backgroundColor=1a1a1a" alt="Nel"><div class="member-ring"></div></div><div class="member-info"><h5>NEL</h5><span class="role">Technical Director</span><p class="bio">Leads advanced racing powertrain development.</p></div></div>
+        <div class="member-card reveal" style="--d:160ms"><div class="member-img-wrap"><img src="https://api.dicebear.com/7.x/personas/svg?seed=Haythem&backgroundColor=1a1a1a" alt="Haythem"><div class="member-ring"></div></div><div class="member-info"><h5>HAYTHEM</h5><span class="role">Head of Aerodynamic Design</span><p class="bio">Optimizes airflow and structural performance.</p></div></div>
+        <div class="member-card reveal" style="--d:240ms"><div class="member-img-wrap"><img src="https://api.dicebear.com/7.x/personas/svg?seed=Gab&backgroundColor=1a1a1a" alt="Gab"><div class="member-ring"></div></div><div class="member-info"><h5>GAB</h5><span class="role">Brand Strategy Director</span><p class="bio">Shapes the luxury identity of BCM worldwide.</p></div></div>
+        <div class="member-card reveal" style="--d:320ms"><div class="member-img-wrap"><img src="https://api.dicebear.com/7.x/personas/svg?seed=Marc&backgroundColor=1a1a1a" alt="Marc"><div class="member-ring"></div></div><div class="member-info"><h5>MARC</h5><span class="role">Development Driver</span><p class="bio">Tests and validates performance on track.</p></div></div>
+        <div class="member-card reveal" style="--d:400ms"><div class="member-img-wrap"><img src="https://api.dicebear.com/7.x/personas/svg?seed=Danil&backgroundColor=1a1a1a" alt="Danil"><div class="member-ring"></div></div><div class="member-info"><h5>DANIL</h5><span class="role">Acoustic Engineer</span><p class="bio">Crafts the signature sound of BCM machines.</p></div></div>
+    </div>
+</section>
 
-        <div class="member-card">
-            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Member 2">
-            <h5>NEL</h5>
-            <span class="role">Technical Director</span>
-            <p class="bio">Leads advanced racing powertrain development.</p>
-        </div>
-
-        <div class="member-card">
-            <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Member 3">
-            <h5>HAYTHEM</h5>
-            <span class="role">Head of Aerodynamic Design</span>
-            <p class="bio">Optimizes airflow and structural performance.</p>
-        </div>
-
-        <div class="member-card">
-            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Member 4">
-            <h5>GAB</h5>
-            <span class="role">Brand Strategy Director</span>
-            <p class="bio">Shapes the luxury identity of BCM worldwide.</p>
-        </div>
-
-        <div class="member-card">
-            <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Member 5">
-            <h5>MARC</h5>
-            <span class="role">Development Driver</span>
-            <p class="bio">Tests and validates performance on track.</p>
-        </div>
-
-        <div class="member-card">
-            <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Member 6">
-            <h5>DANIL</h5>
-            <span class="role">Acoustic Engineer</span>
-            <p class="bio">Crafts the signature sound of BCM machines.</p>
+<!-- GLOBE -->
+<section id="Globe" class="globe-section">
+    <div class="globe-inner reveal">
+        <div id="globe-container"></div>
+        <div class="globe-text">
+            <span class="section-tag">// WORLDWIDE</span>
+            <h2>Performance<br><em>Without Borders</em></h2>
+            <p>Every BCM innovation is engineered to push limits — combining racing science, lightweight materials, and refined craftsmanship.</p>
+            <p>Step into a world where luxury meets motorsport, and experience performance engineered to its purest form.</p>
+            <a href="#models" class="btn-primary">
+                <span>Explore the Collection</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
         </div>
     </div>
 </section>
 
-<section id="Globe" class="Globe">
-<div class="hero-split">
-    <div id="globe-container"></div>
-    <div class="hero-text">
-        <h1>Performance Without Borders</h1>
-        <p>
-            Every BCM innovation is engineered to push limits —
-            combining racing science, lightweight materials,
-            and refined craftsmanship.
-        </p>
-        <p>
-            Step into a world where luxury meets motorsport,
-            and experience performance engineered to its purest form.
-        </p>
-        <a href="#models" class="btn-primary">Explore the collection</a>
-    </div>
-</div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script> <script> const scene = new THREE.Scene(); const container = document.getElementById("globe-container"); const camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 1000); const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); renderer.setSize(container.clientWidth, container.clientHeight); container.appendChild(renderer.domElement); const radius = 2, widthSegments = 64, heightSegments = 64; const geometry = new THREE.SphereGeometry(radius, widthSegments, heightSegments); const textureLoader = new THREE.TextureLoader(); const earthTexture = textureLoader.load("https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg"); const earthMaterial = new THREE.MeshBasicMaterial({ map: earthTexture }); const earth = new THREE.Mesh(geometry, earthMaterial); scene.add(earth); const wireframe = new THREE.WireframeGeometry(geometry); const material = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.5 }); const globe = new THREE.LineSegments(wireframe, material); scene.add(globe); camera.position.z = 5; const controls = new THREE.OrbitControls(camera, renderer.domElement); controls.enableDamping = true; controls.dampingFactor = 0.05; controls.enableZoom = true; function animate() { requestAnimationFrame(animate); earth.rotation.y += 0.003; globe.rotation.y += 0.003; controls.update(); renderer.render(scene, camera); } animate(); window.addEventListener("resize", () => { const size = Math.min(window.innerWidth, window.innerHeight) * 0.6; container.style.width = size + "px"; container.style.height = size + "px"; camera.aspect = container.clientWidth / container.clientHeight; camera.updateProjectionMatrix(); renderer.setSize(container.clientWidth, container.clientHeight); }); </script>
-
+<!-- FOOTER -->
 <footer id="contact">
+    <div class="footer-rule"></div>
     <div class="footer-content">
         <div class="footer-brand">
-            <h3>BUDGETCUT MOTORS</h3>
-            <p>Precision. Luxury. Performance.</p>
+            <div class="footer-logo">BCM<span>.</span></div>
+            <p class="footer-sub">Precision. Luxury. Performance.</p>
+            <p class="footer-est">EST. 2026 — LYON, FRANCE</p>
         </div>
-        
         <div class="footer-contact">
             <h4>Contact</h4>
-            <p>Email: contact@budgetcut-motors.fake</p>
-            <p>Tel: +33 1 23 45 67 89</p>
-            <p>Address: ..............., Lyon</p>
+            <p><i class="fas fa-envelope"></i> contact@budgetcut-motors.fake</p>
+            <p><i class="fas fa-phone"></i> +33 1 23 45 67 89</p>
+            <p><i class="fas fa-map-marker-alt"></i> Lyon, Auvergne-Rhône-Alpes</p>
         </div>
-
         <div class="footer-social">
-            <h4>Follow</h4>
+            <h4>Follow BCM</h4>
             <div class="social-icons">
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="social-btn"><i class="fab fa-linkedin"></i></a>
             </div>
         </div>
     </div>
-
     <div class="footer-bottom">
-        &copy; 2026 Budgetcut Motors. Student project.
+        <span>&copy; 2026 Budgetcut Motors.</span>
+        <span class="footer-sep">—</span>
+        <span>Student Project</span>
     </div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+// Globe
+(function() {
+    const container = document.getElementById("globe-container");
+    if (!container) return;
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    container.appendChild(renderer.domElement);
+
+    const geo = new THREE.SphereGeometry(2, 64, 64);
+    const loader = new THREE.TextureLoader();
+    const earth = new THREE.Mesh(geo, new THREE.MeshBasicMaterial({ map: loader.load("https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg") }));
+    scene.add(earth);
+
+    const wire = new THREE.LineSegments(new THREE.WireframeGeometry(geo), new THREE.LineBasicMaterial({ color: 0xedbe00, transparent: true, opacity: 0.15 }));
+    scene.add(wire);
+
+    const atm = new THREE.Mesh(new THREE.SphereGeometry(2.18, 64, 64), new THREE.MeshBasicMaterial({ color: 0xedbe00, transparent: true, opacity: 0.05, side: THREE.BackSide }));
+    scene.add(atm);
+
+    camera.position.z = 5;
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true; controls.dampingFactor = 0.05;
+    controls.enableZoom = false; controls.autoRotate = true; controls.autoRotateSpeed = 0.6;
+
+    (function animate() { requestAnimationFrame(animate); controls.update(); renderer.render(scene, camera); })();
+    window.addEventListener("resize", () => {
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(container.clientWidth, container.clientHeight);
+    });
+})();
+</script>
+<script src="script.js"></script>
 </body>
 </html>
