@@ -1,22 +1,378 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Budgetcut Motors | Official Site</title>
+    <title>BCM Collection | The Cut Series</title>
     <link rel="stylesheet" href="collection.css">
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;500;600;700&family=Space+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<nav>
+<body>
+
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<nav id="navbar">
     <div class="nav-container">
-        <div class="brand">BCM <span style="color:#edbe00">.</span></div>
+        <div class="brand"><a href="index.html">BCM<span class="brand-dot">.</span></a></div>
         <div class="menu">
-            <a href="index.html">Heritage</a>
-            <a href="#models">Index</a>
-            <a href="#team">Engineering</a>
-            <a href="#contact">Contact</a>
+            <a href="index.html" class="nav-link"><span>Index</span></a>
+            <a href="Heritage.html" class="nav-link"><span>Heritage</span></a>
+            <a href="Engineering.html" class="nav-link"><span>Engineering</span></a>
+            <a href="Contact.html" class="nav-link"><span>Contact</span></a>
         </div>
+        <div class="nav-est">EST. 2026</div>
     </div>
 </nav>
+
+<!-- HERO -->
+<section class="page-hero">
+    <div class="hero-noise"></div>
+    <div class="hero-overlay"></div>
+    <div class="page-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1503376763036-066120622c74?q=80&w=2070&auto=format&fit=crop')"></div>
+    <div class="page-hero-content">
+        <div class="hero-eyebrow">
+            <span class="eyebrow-line"></span>
+            <span class="eyebrow-text">THE CUT SERIES</span>
+            <span class="eyebrow-line"></span>
+        </div>
+        <h1 class="page-hero-title">
+            <span class="title-row">THE</span>
+            <span class="title-row big gold">COLLECTION</span>
+        </h1>
+        <p class="page-hero-sub">Four machines. One philosophy. Zero compromise.</p>
+    </div>
+    <div class="hero-scroll-hint">
+        <span>SCROLL</span>
+        <div class="scroll-line"></div>
+    </div>
+</section>
+
+<!-- GRID -->
+<section class="collection-grid-section">
+    <div class="collection-grid">
+
+        <!-- APEX -->
+        <article class="col-card reveal" data-category="track" data-model="apex">
+            <div class="col-card-img">
+                <img src="Nel/Nel1.png" alt="BCM Apex">
+                <div class="col-card-overlay"></div>
+                <div class="col-card-badge">TRACK</div>
+                <div class="col-card-hp">720 HP</div>
+            </div>
+            <div class="col-card-info">
+                <div class="col-card-top">
+                    <h3>BCM APEX</h3>
+                    <span class="col-card-tag">// 01</span>
+                </div>
+                    <div class="col-card-stats">
+                    <div class="mini-stat"><span class="ms-val">2.8s</span><span class="ms-key">0–100</span></div>
+                    <div class="mini-stat"><span class="ms-val">900kg</span><span class="ms-key">Weight</span></div>
+                    <div class="mini-stat"><span class="ms-val">V12</span><span class="ms-key">Engine</span></div>
+                </div>
+                    <a href="nel.html" class="nav-link"><span>Explore</span></a>
+                </button>
+            </div>
+        </article>
+
+        <!-- VELOCITY -->
+        <article class="col-card reveal" data-category="heritage" data-model="b58am">
+    <div class="col-card-img">
+        <img src="Marc/Marc1.png" alt="B58-AM">
+        <div class="col-card-overlay"></div>
+        <div class="col-card-badge">HERITAGE</div>
+        <div class="col-card-hp">540 HP</div>
+    </div>
+    <div class="col-card-info">
+        <div class="col-card-top">
+            <h3>B58-AM Heritage</h3>
+            <span class="col-card-tag">// 02</span>
+        </div>
+        <div class="col-card-stats">
+            <div class="mini-stat"><span class="ms-val">700Nm</span><span class="ms-key">Torque</span></div>
+            <div class="mini-stat"><span class="ms-val">1525kg</span><span class="ms-key">Weight</span></div>
+            <div class="mini-stat"><span class="ms-val">I6</span><span class="ms-key">Engine</span></div>
+        </div>
+        <a href="marc.html" class="nav-link"><span>Explore</span></a>
+    </div>
+</article>
+
+        <!-- PULSE -->
+        <article class="col-card reveal" data-category="track" data-model="theov6">
+    <div class="col-card-img">
+        <img src="theo/théo3.png" alt="Theo V6">
+        <div class="col-card-overlay"></div>
+        <div class="col-card-badge">PERFORMANCE</div>
+        <div class="col-card-hp">525 HP</div>
+    </div>
+    <div class="col-card-info">
+        <div class="col-card-top">
+            <h3>THEO V6</h3>
+            <span class="col-card-tag">// 04</span>
+        </div>
+        <div class="col-card-stats">
+            <div class="mini-stat"><span class="ms-val">3.2s</span><span class="ms-key">0–100</span></div>
+            <div class="mini-stat"><span class="ms-val">1400kg</span><span class="ms-key">Weight</span></div>
+            <div class="mini-stat"><span class="ms-val">V6</span><span class="ms-key">Engine</span></div>
+        </div>
+        <a href="theo.html" class="nav-link"><span>Explore</span></a>
+    </div>
+</article>
+
+        <!-- NOVA -->
+        <article class="col-card reveal" data-category="electric" data-model="gte">
+    <div class="col-card-img">
+        <img src="gab/Gab1.png" alt="BCM GTE">
+        <div class="col-card-overlay"></div>
+        <div class="col-card-badge">ELECTRIC</div>
+        <div class="col-card-hp">750 HP</div>
+    </div>
+    <div class="col-card-info">
+        <div class="col-card-top">
+            <h3>BCM GTE</h3>
+            <span class="col-card-tag">// 03</span>
+        </div>
+        <div class="col-card-stats">
+            <div class="mini-stat"><span class="ms-val">3.4s</span><span class="ms-key">0–60</span></div>
+            <div class="mini-stat"><span class="ms-val">2750kg</span><span class="ms-key">Weight</span></div>
+            <div class="mini-stat"><span class="ms-val">EV</span><span class="ms-key">Dual-M</span></div>
+        </div>
+        <a href="gab.html" class="nav-link"><span>Explore</span></a>
+    </div>
+</article>
+<article class="col-card reveal" data-category="luxury" data-model="royal-g">
+    <div class="col-card-img">
+        <img src="danil/Danil1.png" alt="Royal-G">
+        <div class="col-card-overlay"></div>
+        <div class="col-card-badge">OFF-ROAD</div>
+        <div class="col-card-hp">585 HP</div>
+    </div>
+    <div class="col-card-info">
+        <div class="col-card-top">
+            <h3>ROYAL-G</h3>
+            <span class="col-card-tag">// 01</span>
+        </div>
+        <div class="col-card-stats">
+            <div class="mini-stat"><span class="ms-val">4.8s</span><span class="ms-key">0–100</span></div>
+            <div class="mini-stat"><span class="ms-val">2850kg</span><span class="ms-key">Weight</span></div>
+            <div class="mini-stat"><span class="ms-val">V8</span><span class="ms-key">Engine</span></div>
+        </div>
+        <a href="danil.html" class="nav-link"><span>Explore</span></a>
+    </div>
+</article>
+<article class="col-card reveal" data-category="track" data-model="4vcg">
+    <div class="col-card-img">
+        <img src="haythem/h3.png" alt="4VCG Alpha">
+        <div class="col-card-overlay"></div>
+        <div class="col-card-badge">V-MAX</div>
+        <div class="col-card-hp">812 HP</div>
+    </div>
+    <div class="col-card-info">
+        <div class="col-card-top">
+            <h3>PROJECT 4VCG</h3>
+            <span class="col-card-tag">// ALPHA</span>
+        </div>
+        <div class="col-card-stats">
+            <div class="mini-stat"><span class="ms-val">410km/h</span><span class="ms-key">V-Max</span></div>
+            <div class="mini-stat"><span class="ms-val">910kg</span><span class="ms-key">Weight</span></div>
+            <div class="mini-stat"><span class="ms-val">E-AWD</span><span class="ms-key">Drivetrain</span></div>
+        </div>
+        <a href="haythem.html" class="nav-link"><span>Explore</span></a>
+    </div>
+</article>
+    </div>
+</section>
+
+<!-- DETAIL MODAL -->
+<div class="detail-modal" id="detailModal">
+    <div class="modal-backdrop" onclick="closeDetail()"></div>
+    <div class="modal-panel">
+        <button class="modal-close" onclick="closeDetail()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+        <div class="modal-img-wrap">
+            <img id="modal-img" src="" alt="">
+            <div class="modal-img-overlay"></div>
+            <div id="modal-badge" class="modal-badge"></div>
+        </div>
+        <div class="modal-body">
+            <div class="modal-header">
+                <span id="modal-tag" class="section-tag"></span>
+                <h2 id="modal-name"></h2>
+                <p id="modal-desc" class="modal-desc"></p>
+            </div>
+            <div class="modal-specs" id="modal-specs"></div>
+            <div class="modal-perf" id="modal-perf"></div>
+            <a href="#" class="btn-primary modal-btn">
+                <span>Configure Your BCM</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer id="contact">
+    <div class="footer-rule"></div>
+    <div class="footer-content">
+        <div class="footer-brand">
+            <div class="footer-logo">BCM<span>.</span></div>
+            <p class="footer-sub">Precision. Luxury. Performance.</p>
+            <p class="footer-est">EST. 2026 — LYON, FRANCE</p>
+        </div>
+        <div class="footer-contact">
+            <h4>Contact</h4>
+            <p><i class="fas fa-envelope"></i> contact@budgetcut-motors.fake</p>
+            <p><i class="fas fa-phone"></i> +33 1 23 45 67 89</p>
+            <p><i class="fas fa-map-marker-alt"></i> Lyon, Auvergne-Rhône-Alpes</p>
+        </div>
+        <div class="footer-social">
+            <h4>Follow BCM</h4>
+            <div class="social-icons">
+                <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="social-btn"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>&copy; 2026 Budgetcut Motors.</span>
+        <span class="footer-sep">—</span>
+        <span>The Cut Series</span>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+// ── CAR DATA ────────────────────────────────────────────────
+const cars = {
+    apex: {
+        name: 'BCM APEX', tag: '// 01 — TRACK', badge: 'TRACK', badgeClass: '',
+        img: 'image/Car_parkingslot.png',
+        desc: 'Ultra-light carbon architecture engineered for explosive acceleration and uncompromising track-level precision. The Apex is BCM\'s purest expression of motorsport DNA translated to the road.',
+        specs: [
+            { k: 'Engine', v: 'Recycled Eco V8' }, { k: 'Displacement', v: '4.0L' },
+            { k: 'Power', v: '720 HP' }, { k: 'Torque', v: '680 Nm' },
+            { k: 'Transmission', v: '8-speed DCT' }, { k: 'Drive', v: 'RWD' },
+            { k: 'Weight', v: '900 kg' }, { k: 'Top Speed', v: '340 km/h' },
+        ],
+        perf: [
+            { label: '0–100 km/h', val: '2.8s', pct: 88 },
+            { label: 'Top Speed', val: '340 km/h', pct: 92 },
+            { label: 'Downforce', val: '650 kg', pct: 85 },
+        ]
+    },
+    velocity: {
+        name: 'BCM VELOCITY', tag: '// 02 — HYBRID', badge: 'HYBRID', badgeClass: '',
+        img: 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?q=80&w=2070&auto=format&fit=crop',
+        desc: 'Circuit-focused platform optimized through advanced aerodynamics and cutting-edge hybrid racing technology. The Velocity bridges the gap between everyday grand touring and full race mode.',
+        specs: [
+            { k: 'Engine', v: 'Hybrid V6 + E-Motor' }, { k: 'Displacement', v: '3.0L' },
+            { k: 'Power', v: '650 HP' }, { k: 'Torque', v: '720 Nm' },
+            { k: 'Transmission', v: '7-speed PDK' }, { k: 'Drive', v: 'AWD' },
+            { k: 'Weight', v: '1100 kg' }, { k: 'Top Speed', v: '310 km/h' },
+        ],
+        perf: [
+            { label: '0–100 km/h', val: '3.1s', pct: 80 },
+            { label: 'Top Speed', val: '310 km/h', pct: 84 },
+            { label: 'Range (EV)', val: '80 km', pct: 45 },
+        ]
+    },
+    pulse: {
+        name: 'BCM PULSE', tag: '// 03 — PERFORMANCE SUV', badge: 'SUV', badgeClass: '',
+        img: 'image/Car_parkingslot.png',
+        desc: 'Performance SUV combining elevated comfort with supercar dynamics and adaptive stability. The Pulse proves that utility and extreme performance are not mutually exclusive.',
+        specs: [
+            { k: 'Engine', v: 'Diesel V12' }, { k: 'Displacement', v: '6.0L' },
+            { k: 'Power', v: '800 HP' }, { k: 'Torque', v: '1050 Nm' },
+            { k: 'Transmission', v: '9-speed Auto' }, { k: 'Drive', v: 'AWD' },
+            { k: 'Weight', v: '1500 kg' }, { k: 'Top Speed', v: '290 km/h' },
+        ],
+        perf: [
+            { label: '0–100 km/h', val: '3.5s', pct: 74 },
+            { label: 'Top Speed', val: '290 km/h', pct: 78 },
+            { label: 'Payload', val: '600 kg', pct: 72 },
+        ]
+    },
+    nova: {
+        name: 'BCM NOVA', tag: '// 04 — ELECTRIC', badge: 'ELECTRIC', badgeClass: 'electric',
+        img: 'https://images.unsplash.com/photo-1503376763036-066120622c74?q=80&w=2070&auto=format&fit=crop',
+        desc: 'Fully electric tri-motor system delivering instant torque and next-generation performance. The Nova is BCM\'s vision of the future — zero compromise, infinite potential.',
+        specs: [
+            { k: 'Powertrain', v: 'Electric Tri-Motor' }, { k: 'Battery', v: '120 kWh' },
+            { k: 'Power', v: '1000 HP' }, { k: 'Torque', v: '1400 Nm' },
+            { k: 'Transmission', v: 'Single-speed' }, { k: 'Drive', v: 'AWD' },
+            { k: 'Range', v: '500 km' }, { k: 'Top Speed', v: '360 km/h' },
+        ],
+        perf: [
+            { label: '0–100 km/h', val: '1.9s', pct: 100 },
+            { label: 'Top Speed', val: '360 km/h', pct: 100 },
+            { label: 'Range', val: '500 km', pct: 90 },
+        ]
+    }
+};
+
+function openDetail(id) {
+    const car = cars[id];
+    const modal = document.getElementById('detailModal');
+    document.getElementById('modal-img').src = car.img;
+    document.getElementById('modal-badge').textContent = car.badge;
+    document.getElementById('modal-badge').className = 'modal-badge ' + car.badgeClass;
+    document.getElementById('modal-tag').textContent = car.tag;
+    document.getElementById('modal-name').textContent = car.name;
+    document.getElementById('modal-desc').textContent = car.desc;
+
+    // Specs
+    let specsHTML = '<h4 class="modal-section-title">Technical Specifications</h4><ul class="modal-specs-list">';
+    car.specs.forEach(s => { specsHTML += `<li><span class="sk">${s.k}</span><span class="sv">${s.v}</span></li>`; });
+    specsHTML += '</ul>';
+    document.getElementById('modal-specs').innerHTML = specsHTML;
+
+    // Perf bars
+    let perfHTML = '<h4 class="modal-section-title">Performance Index</h4>';
+    car.perf.forEach(p => {
+        perfHTML += `
+        <div class="perf-bar-item">
+            <div class="perf-bar-label"><span>${p.label}</span><span class="perf-val">${p.val}</span></div>
+            <div class="perf-bar-track"><div class="perf-bar-fill" style="--w:${p.pct}%"></div></div>
+        </div>`;
+    });
+    document.getElementById('modal-perf').innerHTML = perfHTML;
+
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+
+    // Animate bars after paint
+    setTimeout(() => {
+        modal.querySelectorAll('.perf-bar-fill').forEach(b => b.classList.add('animate'));
+    }, 100);
+}
+
+function closeDetail() {
+    document.getElementById('detailModal').classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+// Filter
+document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.col-card').forEach(card => {
+            const match = filter === 'all' || card.dataset.category === filter;
+            card.style.transition = 'opacity 0.4s, transform 0.4s';
+            card.style.opacity = match ? '1' : '0.15';
+            card.style.transform = match ? 'scale(1)' : 'scale(0.97)';
+            card.style.pointerEvents = match ? 'auto' : 'none';
+        });
+    });
+});
+
+// Close on Escape
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDetail(); });
+</script>
+</body>
 </html>

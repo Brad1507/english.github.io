@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BCM Contact | Get In Touch</title>
+    <link rel="stylesheet" href="Contact.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;500;600;700&family=Space+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<nav id="navbar">
+    <div class="nav-container">
+        <div class="brand"><a href="index.html">BCM<span class="brand-dot">.</span></a></div>
+        <div class="menu">
+            <a href="index.html" class="nav-link"><span>Index</span></a>
+            <a href="Heritage.html" class="nav-link"><span>Heritage</span></a>
+            <a href="Collection.html" class="nav-link"><span>Collection</span></a>
+            <a href="Engineering.html" class="nav-link"><span>Engineering</span></a>
+        </div>
+        <div class="nav-est">EST. 2026</div>
+    </div>
+</nav>
+
+<!-- CONTACT SPLIT SCREEN -->
+<main class="contact-main">
+
+    <!-- LEFT PANEL -->
+    <aside class="contact-left">
+        <div class="contact-left-bg"></div>
+        <div class="contact-left-overlay"></div>
+        <div class="contact-left-content">
+            <div class="hero-eyebrow">
+                <span class="eyebrow-line"></span>
+                <span class="eyebrow-text">GET IN TOUCH</span>
+                <span class="eyebrow-line"></span>
+            </div>
+            <h1 class="contact-title">
+                <span>LET'S</span>
+                <span class="gold">TALK</span>
+            </h1>
+            <p class="contact-tagline">Whether you're a collector, press, or partner — we want to hear from you.</p>
+
+            <div class="contact-info-list">
+                <div class="contact-info-item reveal">
+                    <div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div>
+                        <span class="ci-label">Headquarters</span>
+                        <span class="ci-val">BCM Atelier, Lyon<br>Auvergne-Rhône-Alpes, France</span>
+                    </div>
+                </div>
+                <div class="contact-info-item reveal" style="--d:80ms">
+                    <div class="ci-icon"><i class="fas fa-envelope"></i></div>
+                    <div>
+                        <span class="ci-label">Email</span>
+                        <span class="ci-val">contact@budgetcut-motors.fake</span>
+                    </div>
+                </div>
+                <div class="contact-info-item reveal" style="--d:160ms">
+                    <div class="ci-icon"><i class="fas fa-phone"></i></div>
+                    <div>
+                        <span class="ci-label">Phone</span>
+                        <span class="ci-val">+33 1 23 45 67 89</span>
+                    </div>
+                </div>
+                <div class="contact-info-item reveal" style="--d:240ms">
+                    <div class="ci-icon"><i class="fas fa-clock"></i></div>
+                    <div>
+                        <span class="ci-label">Atelier Hours</span>
+                        <span class="ci-val">Mon–Fri, 09:00–18:00 CET</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-social reveal" style="--d:320ms">
+                <span class="section-tag">// FOLLOW BCM</span>
+                <div class="social-icons">
+                    <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-btn"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+
+            <!-- Decorative BCM text -->
+            <div class="contact-bg-text" aria-hidden="true">BCM</div>
+        </div>
+    </aside>
+
+    <!-- RIGHT PANEL — FORM -->
+    <section class="contact-right">
+        <div class="contact-form-wrap reveal">
+            <div class="form-header">
+                <span class="section-tag">// SEND A MESSAGE</span>
+                <h2 class="form-title">Write<br><em>to us</em></h2>
+            </div>
+
+            <!-- Subject tabs -->
+            <div class="subject-tabs">
+                <button class="stab active" data-subject="inquiry">General Inquiry</button>
+                <button class="stab" data-subject="press">Press & Media</button>
+                <button class="stab" data-subject="purchase">Purchase</button>
+                <button class="stab" data-subject="partner">Partnership</button>
+            </div>
+
+            <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+                <input type="hidden" name="subject_type" id="subject_type" value="inquiry">
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fname">First Name</label>
+                        <input type="text" id="fname" name="fname" placeholder="Jean" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lname">Last Name</label>
+                        <input type="text" id="lname" name="lname" placeholder="Dupont" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="jean.dupont@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone (optional)</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+33 6 00 00 00 00">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Tell us what you have in mind..." required></textarea>
+                    <div class="char-count"><span id="charCount">0</span> / 500</div>
+                </div>
+
+                <div class="form-check">
+                    <input type="checkbox" id="privacy" name="privacy" required>
+                    <label for="privacy">I agree that BCM may store and process my data to respond to my inquiry.</label>
+                </div>
+
+                <button type="submit" class="btn-primary form-submit">
+                    <span>Send Message</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+                </button>
+            </form>
+
+            <!-- SUCCESS STATE -->
+            <div class="form-success" id="formSuccess">
+                <div class="success-icon"><i class="fas fa-check"></i></div>
+                <h3>Message Sent</h3>
+                <p>Thank you for reaching out. A member of the BCM team will respond within 48 hours.</p>
+                <button class="btn-primary" onclick="resetForm()">
+                    <span>Send Another</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<script src="script.js"></script>
+<script>
+// Subject tabs
+document.querySelectorAll('.stab').forEach(tab => {
+    tab.addEventListener('click', () => {
+        document.querySelectorAll('.stab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('subject_type').value = tab.dataset.subject;
+        // Show/hide model selector
+        const modelGroup = document.getElementById('model-group');
+        modelGroup.style.display = (tab.dataset.subject === 'purchase') ? 'block' : 'block';
+    });
+});
+
+// Char counter
+const msg = document.getElementById('message');
+const counter = document.getElementById('charCount');
+if (msg) {
+    msg.addEventListener('input', () => {
+        const len = msg.value.length;
+        counter.textContent = len;
+        counter.style.color = len > 450 ? 'var(--gold)' : '';
+        if (len > 500) msg.value = msg.value.slice(0, 500);
+    });
+}
+
+// Form submit
+function handleSubmit(e) {
+    e.preventDefault();
+    const btn = document.querySelector('.form-submit');
+    btn.disabled = true;
+    btn.querySelector('span').textContent = 'Sending...';
+    setTimeout(() => {
+        document.getElementById('contactForm').style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'flex';
+    }, 1200);
+}
+
+function resetForm() {
+    document.getElementById('contactForm').reset();
+    counter.textContent = '0';
+    document.getElementById('contactForm').style.display = 'block';
+    document.getElementById('formSuccess').style.display = 'none';
+    const btn = document.querySelector('.form-submit');
+    btn.disabled = false;
+    btn.querySelector('span').textContent = 'Send Message';
+}
+</script>
+</body>
+</html>

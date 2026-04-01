@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BCM Apex | Track Series</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;500;600;700&family=Space+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+
+/* =============================================
+   BCM CAR PAGE — Template
+   ============================================= */
+
+:root {
+    --gold: #edbe00;
+    --gold-dim: rgba(237,190,0,.1);
+    --gold-glow: rgba(237,190,0,.3);
+    --dark: #060606;
+    --dark-1: #0d0d0d;
+    --dark-2: #111111;
+    --dark-3: #181818;
+    --dark-4: #222222;
+    --white: #f2f2f2;
+    --grey: #505050;
+    --grey-2: #888888;
+    --grey-3: #b0b0b0;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body: 'Rajdhani', sans-serif;
+    --font-mono: 'Space Mono', monospace;
+    --ease: cubic-bezier(.16,1,.3,1);
+    --ease-out: cubic-bezier(.25,.46,.45,.94);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+    background: var(--dark);
+    color: var(--white);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    cursor: none;
+    opacity: 0;
+    animation: pageIn .7s var(--ease) .1s forwards;
+}
+@keyframes pageIn { to { opacity:1; } }
+a { text-decoration: none; color: inherit; }
+img { display: block; }
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--dark); }
+::-webkit-scrollbar-thumb { background: var(--gold); }
+
+/* CURSOR */
+.cursor-dot {
+    width: 5px; height: 5px;
+    background: var(--gold); border-radius: 50%;
+    position: fixed; top: 0; left: 0;
+    pointer-events: none; z-index: 9999;
+    transform: translate(-50%,-50%);
+    mix-blend-mode: difference;
+}
+.cursor-ring {
+    width: 32px; height: 32px;
+    border: 1.5px solid rgba(237,190,0,.5); border-radius: 50%;
+    position: fixed; top: 0; left: 0;
+    pointer-events: none; z-index: 9998;
+    transform: translate(-50%,-50%);
+    transition: width .35s var(--ease), height .35s var(--ease), border-color .3s;
+}
+.cursor-ring.hover { width: 54px; height: 54px; border-color: rgba(237,190,0,.22); }
+
+/* ============ NAVBAR ============ */
+nav {
+    position: fixed; top: 0; width: 100%; height: 68px;
+    padding: 0 54px; z-index: 1000;
+    display: flex; align-items: center;
+    background: transparent;
+    transition: background .5s, border-color .5s;
+    border-bottom: 1px solid transparent;
+}
+nav.scrolled {
+    background: rgba(6,6,6,.92);
+    backdrop-filter: blur(18px) saturate(1.2);
+    border-bottom-color: rgba(255,255,255,.05);
+}
+nav::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold) 30%, var(--gold) 70%, transparent);
+    opacity: 0; transition: opacity .5s;
+}
+nav.scrolled::before { opacity: 1; }
+.nav-brand {
+    font-family: var(--font-display); font-size: 1.7rem;
+    letter-spacing: .15em; color: var(--white); margin-right: auto;
+    position: relative;
+}
+.nav-brand span { color: var(--gold); }
+.nav-brand::after {
+    content: ''; position: absolute; bottom: -2px; left: 0;
+    width: 0; height: 2px; background: var(--gold);
+    transition: width .4s var(--ease);
+}
+.nav-brand:hover::after { width: 100%; }
+.nav-menu { display: flex; gap: 2px; }
+.nav-link {
+    position: relative; padding: 10px 18px;
+    font-family: var(--font-body); font-size: .8rem; font-weight: 600;
+    letter-spacing: .15em; text-transform: uppercase;
+    color: var(--grey-2); transition: color .3s; overflow: hidden;
+}
+.nav-link span { position: relative; z-index: 1; }
+.nav-link::before {
+    content: ''; position: absolute; bottom: 0; left: 10%; right: 10%;
+    height: 1px; background: var(--gold);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .35s var(--ease);
+}
+.nav-link:hover { color: var(--white); }
+.nav-link:hover::before { transform: scaleX(1); }
+.nav-est { font-family: var(--font-mono); font-size: .58rem; letter-spacing: .28em; color: var(--grey); margin-left: 24px; }
+
+/* ============ HERO SLIDER ============ */
+.car-slider {
+    position: relative;
+    width: 100vw; height: 100vh;
+    overflow: hidden;
+}
+
+/* SLIDES */
+.slider-track {
+    position: relative; width: 100%; height: 100%;
+}
+.slider-slide {
+    position: absolute; inset: 0;
+    opacity: 0; pointer-events: none;
+    transition: opacity .0s;
+}
+.slider-slide.active { opacity: 1; pointer-events: all; }
+
+/* Photo */
+.slide-photo {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+    transform: scale(1.06);
+    filter: brightness(.55) saturate(.75) contrast(1.1);
+    transition: transform 7s var(--ease), filter 1s;
+}
+.slider-slide.active .slide-photo {
+    transform: scale(1);
+    filter: brightness(.65) saturate(.85) contrast(1.05);
+}
+
+/* Overlays */
+.slide-overlay {
+    position: absolute; inset: 0;
+    background:
+        linear-gradient(105deg, rgba(6,6,6,.9) 0%, rgba(6,6,6,.5) 45%, transparent 75%),
+        linear-gradient(180deg, transparent 35%, rgba(6,6,6,.85) 100%);
+}
+.slide-lines {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image: repeating-linear-gradient(
+        105deg, transparent 0px, transparent 90px,
+        rgba(237,190,0,.018) 90px, rgba(237,190,0,.018) 91px
+    );
+}
+.slide-noise {
+    position: absolute; inset: 0; opacity: .04; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 180px;
+}
+
+/* Slide number tag */
+.slide-tag {
+    position: absolute; top: 90px; right: 54px; z-index: 3;
+    font-family: var(--font-mono); font-size: .6rem; letter-spacing: .25em;
+    color: rgba(237,190,0,.6); display: flex; align-items: center; gap: 10px;
+}
+.slide-tag-line { width: 30px; height: 1px; background: var(--gold); opacity: .4; }
+
+/* ============ SLIDER CONTROLS ============ */
+/* Left / right arrows */
+.slider-btn {
+    position: absolute; top: 50%; z-index: 5;
+    transform: translateY(-50%);
+    width: 52px; height: 52px;
+    border: 1px solid rgba(255,255,255,.12); background: rgba(6,6,6,.6);
+    backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--grey-2); font-size: 1rem; cursor: pointer;
+    clip-path: polygon(4px 0%,100% 0%,calc(100% - 4px) 100%,0% 100%);
+    transition: color .3s, background .3s, border-color .3s, transform .3s;
+}
+.slider-btn:hover { color: var(--dark); background: var(--gold); border-color: var(--gold); }
+.slider-btn.prev { left: 40px; }
+.slider-btn.next { right: 40px; }
+.slider-btn:hover { transform: translateY(-50%) scale(1.05); }
+
+/* Bottom dots */
+.slider-dots {
+    position: absolute; bottom: 44px; left: 50%; transform: translateX(-50%);
+    z-index: 5; display: flex; gap: 8px; align-items: center;
+}
+.slider-dot {
+    width: 24px; height: 2px; background: rgba(255,255,255,.2);
+    cursor: pointer; transition: background .4s, width .4s;
+    transform: skewX(-15deg);
+}
+.slider-dot.active { background: var(--gold); width: 40px; }
+
+/* Progress bar */
+.slider-progress {
+    position: absolute; bottom: 0; left: 0; right: 0; z-index: 5;
+    height: 2px; background: rgba(255,255,255,.04);
+    overflow: hidden;
+}
+.slider-progress-fill {
+    height: 100%; background: var(--gold);
+    width: 0; opacity: .5;
+    transition: none;
+}
+.slider-progress-fill.running {
+    animation: progressRun var(--dur, 4s) linear forwards;
+}
+@keyframes progressRun { from { width:0; } to { width:100%; } }
+
+/* Photo counter */
+.slider-counter {
+    position: absolute; bottom: 36px; right: 54px; z-index: 5;
+    font-family: var(--font-mono); font-size: .6rem; letter-spacing: .2em; color: var(--grey);
+    display: flex; align-items: center; gap: 8px;
+}
+.counter-n { font-family: var(--font-display); font-size: 1.4rem; color: var(--white); letter-spacing: .06em; }
+.counter-bar { width: 30px; height: 1px; background: rgba(255,255,255,.15); transform: skewX(-20deg); }
+
+/* Drag hint */
+.drag-hint {
+    position: absolute; bottom: 38px; left: 54px; z-index: 5;
+    font-family: var(--font-mono); font-size: .55rem; letter-spacing: .22em; color: var(--grey);
+    display: flex; align-items: center; gap: 10px;
+    animation: hintPulse 3s ease-in-out infinite;
+}
+@keyframes hintPulse { 0%,100%{opacity:.35;} 50%{opacity:.8;} }
+.drag-hint::before, .drag-hint::after {
+    content: ''; display: block; width: 18px; height: 1px; background: currentColor; transform: skewX(-20deg);
+}
+
+/* ============ CAR INTRO — overlaid on hero ============ */
+.car-intro {
+    position: absolute; left: 9vw; top: 50%;
+    transform: translateY(-50%);
+    z-index: 4; max-width: 560px;
+    pointer-events: none;
+}
+.car-intro-badge {
+    display: inline-flex; align-items: center; gap: 10px;
+    margin-bottom: 20px;
+    font-family: var(--font-mono); font-size: .62rem; letter-spacing: .28em;
+    color: var(--gold);
+    animation: fadeSlideIn .7s var(--ease) .5s both;
+}
+.badge-line { width: 36px; height: 1px; background: var(--gold); opacity: .5; }
+.badge-pill {
+    padding: 4px 14px;
+    border: 1px solid rgba(237,190,0,.35);
+    background: rgba(237,190,0,.08);
+    clip-path: polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);
+    letter-spacing: .2em;
+}
+
+.car-name {
+    font-family: var(--font-display);
+    font-size: clamp(4.5rem,10vw,10rem);
+    letter-spacing: .04em; line-height: .88;
+    color: var(--white);
+    animation: fadeSlideIn .7s var(--ease) .65s both;
+}
+.car-name em {
+    font-style: normal; color: var(--gold);
+    display: block; font-size: .52em;
+    letter-spacing: .12em;
+    text-shadow: 0 0 60px rgba(237,190,0,.2);
+}
+
+.car-tagline {
+    font-size: .95rem; color: var(--grey-3); line-height: 1.75;
+    font-weight: 300; font-style: italic; margin: 18px 0 28px;
+    animation: fadeSlideIn .7s var(--ease) .8s both;
+    max-width: 400px;
+}
+
+/* Quick stats */
+.hero-specs {
+    display: flex; gap: 24px; flex-wrap: wrap;
+    animation: fadeSlideIn .7s var(--ease) .95s both;
+    pointer-events: all;
+}
+.hs-item {
+    display: flex; flex-direction: column; gap: 2px;
+    padding-right: 24px;
+    border-right: 1px solid rgba(255,255,255,.07);
+}
+.hs-item:last-child { border-right: none; }
+.hs-val {
+    font-family: var(--font-display); font-size: 1.8rem;
+    letter-spacing: .04em; color: var(--white); line-height: 1;
+}
+.hs-val.gold { color: var(--gold); text-shadow: 0 0 30px rgba(237,190,0,.25); }
+.hs-key {
+    font-family: var(--font-mono); font-size: .55rem;
+    letter-spacing: .2em; color: var(--grey-2); text-transform: uppercase;
+}
+
+@keyframes fadeSlideIn {
+    from { opacity:0; transform: translateX(-22px); }
+    to   { opacity:1; transform: none; }
+}
+
+/* Scroll hint */
+.hero-scroll {
+    position: absolute; bottom: 80px; left: 9vw; z-index: 4;
+    display: flex; flex-direction: column; align-items: flex-start; gap: 8px;
+    animation: fadeIn 1s var(--ease) 1.4s both;
+}
+.scroll-label { font-family: var(--font-mono); font-size: .55rem; letter-spacing: .28em; color: var(--grey); }
+.scroll-bar { width: 1px; height: 44px; background: linear-gradient(to bottom, var(--gold), transparent); animation: scrollBounce 2s ease-in-out infinite; }
+@keyframes scrollBounce { 0%,100%{transform:scaleY(1);opacity:.4;} 50%{transform:scaleY(.5);opacity:1;} }
+
+@keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+
+/* ============ SPECS SECTION ============ */
+.specs-section {
+    padding: 120px 9vw;
+    background: var(--dark-1);
+    position: relative; overflow: hidden;
+}
+/* Ghost text */
+.specs-section::before {
+    content: 'SPECS';
+    position: absolute; bottom: -20px; right: -10px;
+    font-family: var(--font-display); font-size: clamp(120px,18vw,220px);
+    letter-spacing: .1em; color: transparent;
+    -webkit-text-stroke: 1px rgba(255,255,255,.025);
+    pointer-events: none; user-select: none;
+}
+/* Diagonal accent */
+.specs-section::after {
+    content: ''; position: absolute; left: -2px; top: 0; bottom: 0;
+    width: 3px; background: linear-gradient(to bottom, transparent, var(--gold) 30%, var(--gold) 70%, transparent);
+    opacity: .3;
+}
+
+.specs-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: start;
+}
+
+.specs-left h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem,4vw,4rem); letter-spacing: .06em;
+    color: var(--white); line-height: .9; margin-bottom: 40px;
+    position: relative; display: inline-block;
+}
+.specs-left h2::after {
+    content: ''; position: absolute; bottom: -12px; left: 0;
+    width: 50px; height: 3px; background: var(--gold); transform: skewX(-20deg);
+}
+.specs-left h2 em { font-style: normal; color: var(--gold); }
+
+/* Full specs table */
+.spec-table { width: 100%; }
+.spec-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,.04);
+    transition: padding-left .25s;
+    cursor: default;
+}
+.spec-row:hover { padding-left: 8px; background: rgba(237,190,0,.02); }
+.spec-label {
+    font-family: var(--font-mono); font-size: .62rem;
+    letter-spacing: .16em; color: var(--grey); text-transform: uppercase;
+    display: flex; align-items: center; gap: 10px;
+}
+.spec-label::before {
+    content: ''; display: block; width: 3px; height: 3px;
+    background: var(--gold); transform: rotate(45deg); flex-shrink: 0;
+}
+.spec-value {
+    font-family: var(--font-body); font-size: .95rem; font-weight: 600;
+    color: var(--white); letter-spacing: .06em;
+}
+.spec-value.highlight { color: var(--gold); }
+
+/* Perf bars */
+.specs-right {}
+.perf-title {
+    font-family: var(--font-mono); font-size: .62rem; letter-spacing: .25em;
+    color: var(--gold); text-transform: uppercase; margin-bottom: 30px;
+    display: flex; align-items: center; gap: 12px;
+}
+.perf-title::after { content: ''; flex: 1; height: 1px; background: rgba(237,190,0,.2); }
+
+.perf-bars { display: flex; flex-direction: column; gap: 28px; margin-bottom: 50px; }
+.perf-bar-item {}
+.perf-bar-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 8px;
+}
+.perf-bar-label {
+    font-family: var(--font-mono); font-size: .6rem; letter-spacing: .18em;
+    color: var(--grey-2); text-transform: uppercase;
+}
+.perf-bar-val {
+    font-family: var(--font-display); font-size: 1rem; letter-spacing: .06em; color: var(--white);
+}
+.perf-bar-track {
+    height: 3px; background: rgba(255,255,255,.07);
+    overflow: hidden; transform: skewX(-8deg);
+    position: relative;
+}
+.perf-bar-fill {
+    height: 100%; background: var(--gold); width: 0;
+    transition: width 1.2s var(--ease);
+}
+.perf-bar-fill.animate { width: var(--w); }
+
+/* Description block */
+.car-description {
+    margin-top: 50px; padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,.05);
+}
+.car-description h3 {
+    font-family: var(--font-display); font-size: 1.8rem;
+    letter-spacing: .1em; color: var(--white); margin-bottom: 18px;
+}
+.car-description p {
+    color: var(--grey-3); font-size: .95rem; line-height: 1.85;
+    font-weight: 300; margin-bottom: 18px;
+}
+
+/* ============ PHOTO GALLERY SECTION ============ */
+.gallery-section {
+    padding: 100px 9vw;
+    background: var(--dark);
+    position: relative;
+}
+.gallery-section .sec-tag {
+    font-family: var(--font-mono); font-size: .65rem; letter-spacing: .25em;
+    color: var(--gold); display: block; margin-bottom: 10px; text-transform: uppercase;
+}
+.gallery-section h2 {
+    font-family: var(--font-display); font-size: clamp(2rem,4vw,3.5rem);
+    letter-spacing: .08em; color: var(--white); margin-bottom: 50px;
+    position: relative; display: inline-block;
+}
+.gallery-section h2::after {
+    content: ''; position: absolute; bottom: -10px; left: 0;
+    width: 50px; height: 3px; background: var(--gold); transform: skewX(-20deg);
+}
+
+/* Masonry-style grid */
+.photo-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 320px 320px;
+    gap: 4px;
+}
+.photo-item {
+    position: relative; overflow: hidden; cursor: pointer;
+}
+.photo-item.main { grid-row: span 2; }
+.photo-item img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: brightness(.75) saturate(.7) contrast(1.08);
+    transition: transform .9s var(--ease), filter .6s;
+}
+.photo-item:hover img {
+    transform: scale(1.06);
+    filter: brightness(1) saturate(1) contrast(1);
+}
+/* Overlay */
+.photo-item::before {
+    content: ''; position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(135deg, transparent 60%, rgba(6,6,6,.5) 100%);
+    transition: opacity .4s;
+}
+.photo-item:hover::before { opacity: 0; }
+/* Expand icon */
+.photo-item::after {
+    content: '';
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%,-50%) scale(0);
+    width: 48px; height: 48px; z-index: 2;
+    border: 1px solid var(--gold);
+    background: rgba(6,6,6,.7);
+    clip-path: polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23edbe00' stroke-width='2'%3E%3Cpath d='M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: center;
+    background-size: 18px;
+    transition: transform .4s var(--ease), opacity .4s;
+    opacity: 0;
+}
+.photo-item:hover::after { transform: translate(-50%,-50%) scale(1); opacity: 1; }
+/* Bottom diagonal accent */
+.photo-item .photo-corner {
+    position: absolute; bottom: 0; right: 0; z-index: 2;
+    width: 0; height: 0; border-style: solid;
+    border-width: 0 0 20px 20px;
+    border-color: transparent transparent var(--gold) transparent;
+    opacity: .3; transition: opacity .4s;
+}
+.photo-item:hover .photo-corner { opacity: .7; }
+
+/* ============ LIGHTBOX ============ */
+.lightbox {
+    position: fixed; inset: 0; z-index: 9000;
+    background: rgba(0,0,0,.96);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity .4s;
+}
+.lightbox.open { opacity: 1; pointer-events: all; }
+.lightbox-img {
+    max-width: 90vw; max-height: 86vh; object-fit: contain;
+    transform: scale(.9);
+    transition: transform .5s var(--ease), opacity .3s;
+    opacity: 0;
+}
+.lightbox.open .lightbox-img { transform: scale(1); opacity: 1; }
+.lightbox-close {
+    position: absolute; top: 28px; right: 28px;
+    width: 46px; height: 46px;
+    border: 1px solid rgba(255,255,255,.15); background: rgba(6,6,6,.8);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--white); font-size: .9rem; cursor: pointer;
+    clip-path: polygon(4px 0%,100% 0%,calc(100% - 4px) 100%,0% 100%);
+    transition: background .3s, color .3s;
+}
+.lightbox-close:hover { background: var(--gold); color: var(--dark); }
+.lightbox-nav {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    width: 46px; height: 46px;
+    border: 1px solid rgba(255,255,255,.12); background: rgba(6,6,6,.7);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--grey-2); font-size: .9rem; cursor: pointer;
+    clip-path: polygon(4px 0%,100% 0%,calc(100% - 4px) 100%,0% 100%);
+    transition: color .3s, background .3s, border-color .3s;
+}
+.lightbox-nav:hover { color: var(--dark); background: var(--gold); border-color: var(--gold); }
+.lightbox-nav.lb-prev { left: 28px; }
+.lightbox-nav.lb-next { right: 28px; }
+.lightbox-caption {
+    position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+    font-family: var(--font-mono); font-size: .58rem; letter-spacing: .22em;
+    color: var(--grey); text-transform: uppercase; white-space: nowrap;
+}
+
+/* ============ CTA BAND ============ */
+.cta-band {
+    padding: 100px 9vw;
+    background: var(--dark-1);
+    display: flex; align-items: center; justify-content: space-between; gap: 60px;
+    flex-wrap: wrap;
+    position: relative; overflow: hidden;
+}
+.cta-band::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold) 30%, var(--gold) 70%, transparent);
+    opacity: .25;
+}
+.cta-band::after {
+    content: 'BCM'; position: absolute; right: -20px; top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--font-display); font-size: clamp(100px,16vw,200px);
+    letter-spacing: .1em; color: transparent;
+    -webkit-text-stroke: 1px rgba(255,255,255,.022);
+    pointer-events: none; user-select: none;
+}
+.cta-text h2 {
+    font-family: var(--font-display); font-size: clamp(2.5rem,4vw,4rem);
+    letter-spacing: .06em; color: var(--white); line-height: .95;
+    margin-bottom: 14px;
+}
+.cta-text h2 em { font-style: normal; color: var(--gold); }
+.cta-text p { color: var(--grey-3); font-size: .95rem; font-weight: 300; max-width: 420px; line-height: 1.7; }
+.cta-actions { display: flex; gap: 14px; flex-shrink: 0; flex-wrap: wrap; }
+
+.btn-primary {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 13px 36px;
+    font-family: var(--font-body); font-size: .9rem; font-weight: 700;
+    letter-spacing: .18em; text-transform: uppercase;
+    color: var(--white); border: 1px solid rgba(255,255,255,.2);
+    position: relative; overflow: hidden;
+    transition: color .4s, border-color .4s; cursor: pointer; background: none;
+    clip-path: polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);
+}
+.btn-primary::before {
+    content: ''; position: absolute; inset: 0; background: var(--gold);
+    transform: translateX(-105%) skewX(-5deg); transition: transform .45s var(--ease);
+}
+.btn-primary:hover { color: var(--dark); border-color: var(--gold); }
+.btn-primary:hover::before { transform: none; }
+.btn-primary span, .btn-primary svg { position: relative; z-index: 1; }
+.btn-outline {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 13px 30px;
+    font-family: var(--font-mono); font-size: .65rem; font-weight: 400;
+    letter-spacing: .2em; text-transform: uppercase;
+    color: var(--grey-2); border: 1px solid rgba(255,255,255,.1);
+    background: transparent; cursor: pointer;
+    clip-path: polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);
+    transition: color .3s, border-color .3s;
+}
+.btn-outline:hover { color: var(--white); border-color: var(--gold); }
+
+/* ============ OTHER MODELS ============ */
+.other-models {
+    padding: 100px 9vw;
+    background: var(--dark);
+}
+.other-models .sec-tag { font-family: var(--font-mono); font-size: .65rem; letter-spacing: .25em; color: var(--gold); display: block; margin-bottom: 10px; text-transform: uppercase; }
+.other-models h2 { font-family: var(--font-display); font-size: clamp(2rem,4vw,3rem); letter-spacing: .08em; color: var(--white); margin-bottom: 50px; }
+
+.other-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 3px; }
+.other-card {
+    position: relative; overflow: hidden; background: var(--dark-3);
+    transition: transform .5s var(--ease);
+}
+.other-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    transform: scaleX(0); transform-origin: left; transition: transform .5s var(--ease); z-index: 3;
+}
+.other-card:hover { transform: translateY(-4px); z-index: 2; }
+.other-card:hover::before { transform: scaleX(1); }
+.other-card-img {
+    height: 200px; overflow: hidden; position: relative;
+}
+.other-card-img img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: brightness(.7) saturate(.7);
+    transition: transform .8s var(--ease), filter .5s;
+}
+.other-card:hover .other-card-img img { transform: scale(1.07); filter: brightness(.95) saturate(1); }
+.other-card-img::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to top, var(--dark-3), transparent 60%);
+}
+.other-card-info { padding: 22px 24px 26px; }
+.other-card-cat { font-family: var(--font-mono); font-size: .55rem; letter-spacing: .2em; color: var(--gold); margin-bottom: 6px; }
+.other-card-info h3 { font-family: var(--font-display); font-size: 1.5rem; letter-spacing: .08em; color: var(--white); margin-bottom: 8px; }
+.other-card-info p { font-size: .85rem; color: var(--grey-2); line-height: 1.6; font-weight: 300; font-style: italic; margin-bottom: 16px; }
+.other-card-link {
+    font-family: var(--font-mono); font-size: .62rem; letter-spacing: .18em;
+    color: var(--gold); text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 8px;
+    border-bottom: 1px solid rgba(237,190,0,.2); padding-bottom: 2px;
+    transition: gap .3s, letter-spacing .3s;
+}
+.other-card:hover .other-card-link { gap: 14px; letter-spacing: .26em; }
+
+/* ============ FOOTER ============ */
+footer {
+    background: #030303; padding: 50px 9vw 28px;
+    position: relative; overflow: hidden;
+    border-top: 1px solid rgba(255,255,255,.04);
+}
+footer::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold) 30%, var(--gold) 70%, transparent); opacity: .2;
+}
+.footer-inner {
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px;
+    margin-bottom: 28px;
+}
+.footer-logo { font-family: var(--font-display); font-size: 2rem; letter-spacing: .15em; color: var(--white); }
+.footer-logo span { color: var(--gold); }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { font-family: var(--font-mono); font-size: .6rem; letter-spacing: .2em; color: var(--grey); text-transform: uppercase; transition: color .3s; }
+.footer-links a:hover { color: var(--gold); }
+.footer-bottom { text-align: center; font-family: var(--font-mono); font-size: .58rem; letter-spacing: .2em; color: rgba(255,255,255,.1); padding-top: 22px; border-top: 1px solid rgba(255,255,255,.04); }
+.footer-bottom span.sep { margin: 0 12px; color: var(--gold); opacity: .35; }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity .85s var(--ease), transform .85s var(--ease); transition-delay: var(--d,0ms); }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+    .specs-grid { grid-template-columns: 1fr; gap: 50px; }
+    .photo-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .photo-item.main { grid-row: span 1; grid-column: span 2; height: 320px; }
+    .other-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+    nav { padding: 0 24px; }
+    .nav-est { display: none; }
+    .nav-menu { gap: 0; }
+    .nav-link { padding: 8px 10px; font-size: .72rem; letter-spacing: .1em; }
+    .car-intro { left: 5vw; max-width: 90vw; }
+    .car-name { font-size: clamp(3.5rem,14vw,6rem); }
+    .slider-btn { display: none; }
+    .drag-hint { display: none; }
+    .specs-section, .gallery-section, .cta-band, .other-models { padding: 80px 5vw; }
+    .photo-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+    .photo-item.main { grid-column: span 1; height: 260px; }
+    .photo-item { height: 200px; }
+    .other-grid { grid-template-columns: 1fr; }
+    .cta-band { flex-direction: column; gap: 36px; }
+    .cursor-dot, .cursor-ring { display: none; }
+    body { cursor: auto; }
+}
+
+    </style>
+</head>
+<body>
+
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+    <a href="index.html" class="nav-brand">BCM<span>.</span></a>
+    <div class="nav-menu">
+        <a href="Heritage.html" class="nav-link"><span>Heritage</span></a>
+        <a href="collection.html" class="nav-link"><span>Collection</span></a>
+        <a href="engineering.html" class="nav-link"><span>Engineering</span></a>
+        <a href="contact.html" class="nav-link"><span>Contact</span></a>
+    </div>
+    <div class="nav-est">EST. 2026</div>
+</nav>
+
+<!-- ============ HERO SLIDER ============ -->
+<section class="car-slider" id="heroSlider">
+    <div class="slider-track">
+
+        <!-- Slide 1 -->
+
+        <!-- Slide 2 -->
+        <div class="slider-slide" data-idx="1">
+            <div class="slide-photo" style="background-image: url('danil/Danil1.png')"></div>
+            <div class="slide-overlay"></div>
+            <div class="slide-lines"></div>
+            <div class="slide-noise"></div>
+            <div class="slide-tag"><div class="slide-tag-line"></div>PHOTO 01</div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slider-slide" data-idx="2">
+            <div class="slide-photo" style="background-image: url('danil/Danil2.png')"></div>
+            <div class="slide-overlay"></div>
+            <div class="slide-lines"></div>
+            <div class="slide-noise"></div>
+            <div class="slide-tag"><div class="slide-tag-line"></div>PHOTO 02</div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="slider-slide" data-idx="3">
+            <div class="slide-photo" style="background-image: url('danil/Danil3.png')"></div>
+            <div class="slide-overlay"></div>
+            <div class="slide-lines"></div>
+            <div class="slide-noise"></div>
+            <div class="slide-tag"><div class="slide-tag-line"></div>PHOTO 03</div>
+        </div>
+
+        <!-- Slide 5 -->
+
+    </div>
+
+    <!-- Car intro (static over slider) -->
+<div class="car-intro">
+    <div class="car-intro-badge">
+        <div class="badge-line"></div>
+        <div class="badge-pill">LUXURY OFF-ROAD</div>
+    </div>
+    <h1 class="car-name">
+        ROYAL<em>G</em>
+    </h1>
+    <div class="hero-specs">
+        <div class="hs-item">
+            <span class="hs-val">585</span>
+            <span class="hs-key">HP (AMG)</span>
+        </div>
+        <div class="hs-item">
+            <span class="hs-val">4.8s</span>
+            <span class="hs-key">0–100 km/h</span>
+        </div>
+        <div class="hs-item">
+            <span class="hs-val">2850</span>
+            <span class="hs-key">kg</span>
+        </div>
+        <div class="hs-item">
+            <span class="hs-val">850</span>
+            <span class="hs-key">Nm Torque</span>
+        </div>
+    </div>
+</div>
+
+    <!-- Controls -->
+    <button class="slider-btn prev" onclick="slide(-1)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    </button>
+    <button class="slider-btn next" onclick="slide(1)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+
+    <!-- Dots -->
+    <div class="slider-dots" id="sliderDots">
+        <div class="slider-dot active" onclick="goSlide(0)"></div>
+        <div class="slider-dot" onclick="goSlide(1)"></div>
+        <div class="slider-dot" onclick="goSlide(2)"></div>
+        <div class="slider-dot" onclick="goSlide(3)"></div>
+        <div class="slider-dot" onclick="goSlide(4)"></div>
+    </div>
+
+    <!-- Counter -->
+    <div class="slider-counter">
+        <span class="counter-n" id="sliderN">01</span>
+        <span class="counter-bar"></span>
+        <span>05</span>
+    </div>
+
+    <!-- Progress -->
+    <div class="slider-progress">
+        <div class="slider-progress-fill" id="sliderProgress" style="--dur:4.5s"></div>
+    </div>
+
+    <!-- Drag hint -->
+    <div class="drag-hint">SWIPE OR DRAG</div>
+
+    <!-- Scroll hint -->
+    <div class="hero-scroll">
+        <span class="scroll-label">SCROLL</span>
+        <div class="scroll-bar"></div>
+    </div>
+</section>
+
+<!-- ============ SPECS SECTION ============ -->
+<div class="car-intro">
+    <div class="car-intro-badge">
+        <div class="badge-line"></div>
+        <div class="badge-pill">LUXURY OFF-ROAD</div>
+    </div>
+    <h1 class="car-name">
+        ROYAL<em>G</em>
+    </h1>
+    <div class="hero-specs">
+        <div class="hs-item">
+            <span class="hs-val">585</span>
+            <span class="hs-key">HP (AMG)</span>
+        </div>
+        <div class="hs-item">
+            <span class="hs-val">4.8s</span>
+            <span class="hs-key">0–100 km/h</span>
+        </div>
+        <div class="hs-item">
+            <span class="hs-val">2850</span>
+            <span class="hs-key">kg</span>
+        </div>
+        <div class="hs-item">
+            <span class="hs-val">850</span>
+            <span class="hs-key">Nm Torque</span>
+        </div>
+    </div>
+</div>
+            <div class="car-description">
+                <h3>BORN ON TRACK</h3>
+            </div>
+        </div>
+
+        <div class="specs-right reveal" style="--d:150ms">
+    <div class="perf-title">PERFORMANCE INDEX</div>
+    <div class="perf-bars">
+        <div class="perf-bar-item">
+            <div class="perf-bar-head">
+                <span class="perf-bar-label">Acceleration</span>
+                <span class="perf-bar-val">585 HP / 4.8s</span>
+            </div>
+            <div class="perf-bar-track">
+                <div class="perf-bar-fill" style="--w:75%"></div>
+            </div>
+        </div>
+        <div class="perf-bar-item">
+            <div class="perf-bar-head">
+                <span class="perf-bar-label">Top Speed</span>
+                <span class="perf-bar-val">220 km/h</span>
+            </div>
+            <div class="perf-bar-track">
+                <div class="perf-bar-fill" style="--w:60%"></div>
+            </div>
+        </div>
+        <div class="perf-bar-item">
+            <div class="perf-bar-head">
+                <span class="perf-bar-label">Torque Output</span>
+                <span class="perf-bar-val">850 Nm</span>
+            </div>
+            <div class="perf-bar-track">
+                <div class="perf-bar-fill" style="--w:95%"></div>
+            </div>
+        </div>
+        <div class="perf-bar-item">
+            <div class="perf-bar-head">
+                <span class="perf-bar-label">Off-Road Capability</span>
+                <span class="perf-bar-val">3 Diff Locks</span>
+            </div>
+            <div class="perf-bar-track">
+                <div class="perf-bar-fill" style="--w:98%"></div>
+            </div>
+        </div>
+        <div class="perf-bar-item">
+            <div class="perf-bar-head">
+                <span class="perf-bar-label">Curb Weight</span>
+                <span class="perf-bar-val">2,850 kg</span>
+            </div>
+            <div class="perf-bar-track">
+                <div class="perf-bar-fill" style="--w:40%"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+</section>
+
+<!-- ============ PHOTO GALLERY ============ -->
+<section class="gallery-section">
+    <span class="sec-tag">// GALLERY</span>
+
+    <div class="photo-grid reveal" style="--d:100ms">
+        <div class="photo-item main" onclick="openLightbox(0)">
+            <img src="danil/Danil1.png" alt="BCM Apex Main">
+            <div class="photo-corner"></div>
+        </div>
+        <div class="photo-item" onclick="openLightbox(1)">
+            <img src="danil/Danil2.png" alt="Apex 2">
+            <div class="photo-corner"></div>
+        </div>
+        <div class="photo-item" onclick="openLightbox(2)">
+            <img src="danil/Danil3.png" alt="Apex 3">
+            <div class="photo-corner"></div>
+        </div>
+                <div class="photo-item" onclick="openLightbox(2)">
+            <img src="danil/Danil4.png" alt="Apex 3">
+            <div class="photo-corner"></div>
+        </div>
+    </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-logo">BCM<span>.</span></div>
+        <div class="footer-links">
+            <a href="Heritage.html">Heritage</a>
+            <a href="collection.html">Collection</a>
+            <a href="engineering.html">Engineering</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>&copy; 2026 Budgetcut Motors.</span>
+        <span class="sep">—</span>
+        <span>BCM Apex — Track Series</span>
+    </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+    <img class="lightbox-img" id="lbImg" src="" alt="">
+    <button class="lightbox-close" onclick="closeLightbox()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <button class="lightbox-nav lb-prev" onclick="lbNav(-1)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    </button>
+    <button class="lightbox-nav lb-next" onclick="lbNav(1)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+    <div class="lightbox-caption" id="lbCaption"></div>
+</div>
+
+<script>
+/* ============ HERO SLIDER ============ */
+const slides    = document.querySelectorAll('.slider-slide');
+const dots      = document.querySelectorAll('.slider-dot');
+const progressEl = document.getElementById('sliderProgress');
+const counterEl  = document.getElementById('sliderN');
+const TOTAL      = slides.length;
+const AUTO_MS    = 4500;
+let cur = 0, autoTimer = null, drag = 0, isDrag = false;
+
+function goSlide(idx) {
+    slides[cur].classList.remove('active');
+    dots[cur].classList.remove('active');
+    cur = (idx + TOTAL) % TOTAL;
+    slides[cur].classList.add('active');
+    dots[cur].classList.add('active');
+    counterEl.textContent = String(cur + 1).padStart(2, '0');
+    // Restart progress
+    progressEl.classList.remove('running');
+    progressEl.style.animation = 'none';
+    void progressEl.offsetWidth; // reflow
+    progressEl.style.animation = '';
+    progressEl.classList.add('running');
+    clearInterval(autoTimer);
+    autoTimer = setInterval(() => goSlide(cur + 1), AUTO_MS);
+}
+function slide(dir) { goSlide(cur + dir); }
+
+// Start
+window.addEventListener('load', () => {
+    progressEl.classList.add('running');
+    autoTimer = setInterval(() => goSlide(cur + 1), AUTO_MS);
+});
+
+// Drag / swipe
+const sliderEl = document.getElementById('heroSlider');
+sliderEl.addEventListener('mousedown', e => { drag = e.clientX; isDrag = true; });
+sliderEl.addEventListener('mouseup',   e => { if (isDrag) { if (e.clientX - drag < -60) slide(1); else if (e.clientX - drag > 60) slide(-1); isDrag = false; } });
+sliderEl.addEventListener('touchstart', e => { drag = e.touches[0].clientX; }, { passive: true });
+sliderEl.addEventListener('touchend',   e => { const d = e.changedTouches[0].clientX - drag; if (d < -50) slide(1); else if (d > 50) slide(-1); });
+document.addEventListener('keydown', e => {
+    if (!document.getElementById('lightbox').classList.contains('open')) {
+        if (e.key === 'ArrowRight') slide(1);
+        if (e.key === 'ArrowLeft')  slide(-1);
+    }
+});
+
+/* ============ LIGHTBOX ============ */
+const PHOTOS = [
+    'Nel/Nel1',
+    'Nel/Nel2',
+    'Nel/Nel4',
+    'Nel/Nel5',
+];
+let lbIdx = 0;
+const lb     = document.getElementById('lightbox');
+const lbImg  = document.getElementById('lbImg');
+const lbCap  = document.getElementById('lbCaption');
+
+function openLightbox(idx) {
+    lbIdx = idx;
+    lbImg.src = PHOTOS[idx];
+    lbCap.textContent = `BCM Apex  —  ${idx + 1} / ${PHOTOS.length}`;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+}
+function lbNav(dir) {
+    lbIdx = (lbIdx + dir + PHOTOS.length) % PHOTOS.length;
+    lbImg.style.opacity = '0';
+    setTimeout(() => {
+        lbImg.src = PHOTOS[lbIdx];
+        lbCap.textContent = `BCM Apex  —  ${lbIdx + 1} / ${PHOTOS.length}`;
+        lbImg.style.opacity = '1';
+    }, 180);
+}
+lbImg.style.transition = 'opacity .18s, transform .5s var(--ease)';
+lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+document.addEventListener('keydown', e => {
+    if (lb.classList.contains('open')) {
+        if (e.key === 'ArrowRight') lbNav(1);
+        if (e.key === 'ArrowLeft')  lbNav(-1);
+        if (e.key === 'Escape')     closeLightbox();
+    }
+});
+
+/* ============ CURSOR ============ */
+const dot  = document.querySelector('.cursor-dot');
+const ring = document.querySelector('.cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+if (dot && ring) {
+    document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; dot.style.left=mx+'px'; dot.style.top=my+'px'; });
+    (function ar(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(ar);})();
+    document.querySelectorAll('a,button,.photo-item,.other-card,.slider-btn').forEach(el=>{
+        el.addEventListener('mouseenter',()=>ring.classList.add('hover'));
+        el.addEventListener('mouseleave',()=>ring.classList.remove('hover'));
+    });
+}
+
+/* ============ NAVBAR SCROLL ============ */
+const nav = document.getElementById('navbar');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50), { passive:true });
+
+/* ============ REVEAL ============ */
+const revEls = document.querySelectorAll('.reveal');
+const revObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revObs.unobserve(e.target); } });
+}, { threshold:.1, rootMargin:'0px 0px -40px 0px' });
+revEls.forEach(el => revObs.observe(el));
+
+/* ============ PERF BARS ============ */
+const bars = document.querySelectorAll('.perf-bar-fill');
+const bObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('animate'); bObs.unobserve(e.target); } });
+}, { threshold:.3 });
+bars.forEach(b => bObs.observe(b));
+
+/* ============ MAGNETIC BTNS ============ */
+document.querySelectorAll('.btn-primary, .btn-outline').forEach(btn => {
+    btn.addEventListener('mousemove', e => {
+        const r = btn.getBoundingClientRect();
+        btn.style.transform = `translate(${(e.clientX-r.left-r.width/2)*.12}px,${(e.clientY-r.top-r.height/2)*.16}px)`;
+    });
+    btn.addEventListener('mouseleave', () => btn.style.transform = '');
+});
+
+/* ============ PAGE TRANSITIONS ============ */
+document.querySelectorAll('a[href]').forEach(link => {
+    const href = link.getAttribute('href');
+    if (href && !href.startsWith('#') && !href.startsWith('http')) {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            document.body.style.transition = 'opacity .4s';
+            document.body.style.opacity = '0';
+            setTimeout(() => window.location.href = href, 400);
+        });
+    }
+});
+</script>
+</body>
+</html>

@@ -1,7 +1,4 @@
-/* ===========================
-   BCM — script.js
-   Enhanced Interactions
-   =========================== */
+
 
 document.addEventListener('DOMContentLoaded', () => {
 
